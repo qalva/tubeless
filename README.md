@@ -1,7 +1,7 @@
 # Tubeless
 
 <p align="center">
-  <img src="assets/icon.png" width="150" height="150" />
+  <img src="assets/banner.png" width="150" height="150" />
 </p>
 
 <p align="center">
