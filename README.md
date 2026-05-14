@@ -22,7 +22,7 @@
 
 ## Overview
 
-A comprehensive toolkit to transform YouTube into a focused workspace. Features advanced ad-blocking, dislike restoration, and high-speed downloads via Tubeless Desktop—all running locally with zero telemetry.
+Tubeless is a browser extension that removes all YouTube distractions, restores missing controls, and adds tools for playback, downloads, and all running locally with zero data collection.
 
 ---
 
