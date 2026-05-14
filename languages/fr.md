@@ -66,6 +66,14 @@
 3.  Sélectionnez votre format : **Vidéo** (avec options de qualité), **Audio Uniquement**, ou **Miniature**.
 4.  Le fichier sera sauvegardé avec un nom intelligent (Titre + Horodatage).
 
+### Emplacements de téléchargement par défaut
+Les fichiers sont enregistrés dans votre dossier **Downloads**, organisés par type :
+*   **Vidéos** : `Downloads/Video`
+*   **Audio** : `Downloads/Audio`
+*   **Miniatures** : `Downloads/Thumbnails`
+*   **Sous-titres** : `Downloads/SRT`
+*   **Playlists** : Les playlists complètes sont enregistrées dans un sous-dossier au nom de la playlist dans la catégorie correspondante (ex : `Downloads/Audio/[Nom de la Playlist]`).
+
 ---
 
 <a name="screenshots-pip"></a>
