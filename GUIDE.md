@@ -70,6 +70,14 @@
 3.  Select your format: **Video** (with quality options), **Audio Only**, or **Thumbnail**.
 4.  The file will be saved with a "Smart Filename" (Title + Timestamp).
 
+### Default Download Locations
+Files are saved in your **Downloads** folder, organized by type:
+*   **Videos**: `Downloads/Video`
+*   **Audio**: `Downloads/Audio`
+*   **Thumbnails**: `Downloads/Thumbnails`
+*   **Subtitles**: `Downloads/SRT`
+*   **Playlists**: Full playlists are saved in a subfolder named after the playlist within the corresponding category (e.g., `Downloads/Audio/[Playlist Name]`).
+
 ---
 
 <a name="screenshots-pip"></a>
