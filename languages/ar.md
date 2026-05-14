@@ -1,8 +1,34 @@
+<div dir="rtl" style="font-family: 'IBM Plex Sans Arabic', sans-serif; line-height: 1.6; color: #333;">
+
 <style>
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
+  
+  /* ضمان تطبيق الخط على كل العناصر داخل الحاوية */
+  .md-container * {
+    font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+  }
+  
+  .md-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+  }
+  
+  .md-container th, .md-container td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: right;
+  }
+
+  .md-container blockquote {
+    background: #f9f9f9;
+    border-right: 5px solid #007bff;
+    padding: 10px 20px;
+    margin: 20px 0;
+  }
 </style>
 
-<div dir="rtl" style="font-family: 'IBM Plex Sans Arabic', sans-serif !important; text-align: right;">
+<div class="md-container">
 
 # دليل المستخدم
 
@@ -63,14 +89,13 @@
 <a name="media-downloading"></a>
 ## الوسائط والتحميل
 
-> [!IMPORTANT]
-> لتمكين التحميل، تأكد من تشغيل تطبيق <a href="https://www.mediafire.com/file/0guc81ip46xikzp/Tubeless_Desktop.exe/file" target="_blank">Tubeless Desktop</a> على جهاز الكمبيوتر الخاص بك.
+> **هام جداً:** لتمكين التحميل، تأكد من تشغيل تطبيق [Tubeless Desktop](https://www.mediafire.com/file/0guc81ip46xikzp/Tubeless_Desktop.exe/file) على جهاز الكمبيوتر الخاص بك.
 
 ### كيفية التحميل
-1.  افتح أي فيديو يوتيوب.
-2.  انقر على زر **تحميل** في النافذة المنبثقة.
-3.  اختر التنسيق: **فيديو** (مع خيارات الجودة)، **صوت فقط**، أو **صورة مصغرة**.
-4.  سيتم حفظ الملف باسم "ذكي" (العنوان + الطابع الزمني).
+1. افتح أي فيديو يوتيوب.
+2. انقر على زر **تحميل** في النافذة المنبثقة.
+3. اختر التنسيق: **فيديو** (مع خيارات الجودة)، **صوت فقط**، أو **صورة مصغرة**.
+4. سيتم حفظ الملف باسم "ذكي" (العنوان + الطابع الزمني).
 
 ---
 
@@ -90,20 +115,12 @@
 <a name="keyboard-shortcuts"></a>
 ## اختصارات لوحة المفاتيح
 
-يتميز "تيوب لِس" باختصارات مفاتيح أحادية (تعمل عندما لا تكتب في مربع نص):
-
 | المفتاح | الإجراء |
 | :--- | :--- |
 | **`D`** | بدء التحميل |
 | **`V`** | التقاط لقطة شاشة |
 | **`B`** | المشغل العائم (PiP) |
 | **`O`** | فتح صفحة الإعدادات |
-
-### تغيير الاختصارات
-1.  انتقل إلى قسم **الوسائط والاختصارات** في الإعدادات.
-2.  انقر على **تغيير** بجانب الاختصار.
-3.  اضغط على أي مفتاح في لوحة المفاتيح لربطه.
-4.  انقر على **استعادة** إذا كنت تريد العودة إلى الإعدادات الافتراضية.
 
 ---
 
@@ -120,6 +137,7 @@
 ### إدارة البيانات
 *   **تصدير**: حفظ إعداداتك في ملف `.json`.
 *   **استيراد**: تحميل إعداداتك المحفوظة على جهاز كمبيوتر جديد.
-*   **استعادة الافتراضي**: استخدم زر "استعادة الافتراضيات" للعودة إلى الإعدادات الأصلية (هذا **لن** يعيد ضبط تفضيلات اللغة أو المظهر).
+*   **استعادة الافتراضي**: استخدم زر "استعادة الافتراضيات" للعودة إلى الإعدادات الأصلية.
 
+</div>
 </div>
