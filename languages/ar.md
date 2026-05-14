@@ -1,14 +1,10 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
-  * {
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
+  
+  :root, body, .markdown-body, div, p, h1, h2, h3, h4, h5, h6, li, span, a, td, th {
     font-family: 'IBM Plex Sans Arabic', sans-serif !important;
-  }
-  body, .markdown-body {
-    direction: rtl;
-    text-align: right;
+    direction: rtl !important;
+    text-align: right !important;
   }
 </style>
 
