@@ -26,6 +26,34 @@ A comprehensive toolkit to transform YouTube into a focused workspace. Features 
 
 ---
 
+## Quick Access
+
+1. [User Guide](./GUIDE.md)
+2. [Features](#features)
+    - [Focus & Distraction Control](#focus--distraction-control)
+    - [Playback & Player Enhancements](#playback--player-enhancements)
+    - [Media Tools](#media-tools)
+    - [Productivity & System Tools](#productivity--system-tools)
+3. [Screenshots](#screenshots)
+    - [Deep Work Mode](#deep-work-mode)
+    - [Floating Player Experience](#floating-player-experience)
+    - [Settings Dashboard](#settings-dashboard)
+    - [Popup Interface](#popup-interface)
+    - [In-Page Control](#in-page-control)
+    - [Screenshot System](#screenshot-system)
+4. [Installation](#installation)
+5. [Supported Browsers](#supported-browsers)
+6. [Supported OS](#supported-os)
+7. [Privacy & Security](#privacy--security)
+8. [Disclaimer](#disclaimer)
+9. [Architecture](#architecture)
+10. [Changelog](#changelog)
+    - [[3.0.0] - 2026-05-14](#300---2026-05-14)
+    - [[2.2.0] - 2026-04-29](#220---2026-04-29)
+    - [[1.0.0] - 2026-04-28](#100---2026-04-28)
+
+    ---
+
 ## Features
 
 ### Focus & Distraction Control
