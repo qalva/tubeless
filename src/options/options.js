@@ -11,7 +11,8 @@ const DEFAULT_SETTINGS = {
   forceCinemaMode: false,
   playbackSpeed: 1,
   hideComments: false,
-  loopVideo: false,
+  autoReplayVideos: false,
+  autoReplayShorts: true,
   deepWorkMode: false,
   hideShortsSearch: false,
   adBlockEnabled: true,
@@ -95,6 +96,8 @@ const UI_TEXT = {
     optAutoQuality: 'Auto',
     cinemaMode: 'Cinema Mode',
     loopDefault: 'Auto Replay',
+    loopVideos: 'Auto Replay Videos',
+    loopShorts: 'Auto Replay Shorts',
     hideComments: 'Hide Comments',
     focusVideo: 'Focus on the video only',
     playbackSpeed: 'Playback Speed',
@@ -194,6 +197,8 @@ const UI_TEXT = {
     optAutoQuality: 'تلقائي',
     cinemaMode: 'الوضع السينمائي',
     loopDefault: 'تكرار تلقائي',
+    loopVideos: 'تكرار الفيديوهات تلقائياً',
+    loopShorts: 'تكرار Shorts تلقائياً',
     hideComments: 'إخفاء التعليقات',
     focusVideo: 'التركيز فقط على الفيديو',
     playbackSpeed: 'سرعة التشغيل',
@@ -299,6 +304,8 @@ const UI_TEXT = {
     optAutoQuality: 'Auto',
     cinemaMode: 'Mode Cinéma',
     loopDefault: 'Relecture auto',
+    loopVideos: 'Relecture auto des vidéos',
+    loopShorts: 'Relecture auto des Shorts',
     hideComments: 'Masquer commentaires',
     focusVideo: 'Focus sur la vidéo',
     playbackSpeed: 'Vitesse de lecture',
@@ -397,6 +404,8 @@ const UI_TEXT = {
     optAutoQuality: 'Auto',
     cinemaMode: 'Kinomodus',
     loopDefault: 'Autom. Wiederholung',
+    loopVideos: 'Autom. Video-Wiederholung',
+    loopShorts: 'Autom. Shorts-Wiederholung',
     hideComments: 'Kommentare ausblenden',
     focusVideo: 'Nur auf das Video konzentrieren',
     playbackSpeed: 'Wiedergabegeschwindigkeit',
@@ -487,6 +496,8 @@ const UI_TEXT = {
     optAutoQuality: 'Auto',
     cinemaMode: 'Modo Cine',
     loopDefault: 'Repetición Automática',
+    loopVideos: 'Repetición auto de vídeos',
+    loopShorts: 'Repetición auto de Shorts',
     hideComments: 'Ocultar Comentarios',
     focusVideo: 'Enfocarse solo en el video',
     playbackSpeed: 'Velocidad de reproducción',
@@ -569,6 +580,8 @@ const UI_TEXT = {
     optAutoQuality: '自動',
     cinemaMode: 'シアターモード',
     loopDefault: '自動リピート',
+    loopVideos: '動画の自動リピート',
+    loopShorts: 'Shortsの自動リピート',
     hideComments: 'コメントを非表示',
     focusVideo: '動画だけに集中する',
     playbackSpeed: '再生速度',
@@ -659,6 +672,8 @@ const UI_TEXT = {
     optAutoQuality: '自动',
     cinemaMode: '影院模式',
     loopDefault: '自动重播',
+    loopVideos: '视频自动重播',
+    loopShorts: 'Shorts自动重播',
     hideComments: '隐藏评论',
     focusVideo: '仅专注于视频',
     playbackSpeed: '播放速度',
@@ -749,6 +764,8 @@ const UI_TEXT = {
     optAutoQuality: 'Auto',
     cinemaMode: 'Modo Cinema',
     loopDefault: 'Repetição Automática',
+    loopVideos: 'Repetição auto de vídeos',
+    loopShorts: 'Repetição auto de Shorts',
     hideComments: 'Ocultar Comentários',
     focusVideo: 'Focar apenas no vídeo',
     playbackSpeed: 'Velocidade de reprodução',
@@ -831,6 +848,8 @@ const UI_TEXT = {
     optAutoQuality: 'Авто',
     cinemaMode: 'Режим кино',
     loopDefault: 'Автоповтор',
+    loopVideos: 'Автоповтор видео',
+    loopShorts: 'Автоповтор Shorts',
     hideComments: 'Скрыть комментарии',
     focusVideo: 'Фокус только на видео',
     playbackSpeed: 'Скорость воспроизведения',
@@ -921,6 +940,8 @@ const UI_TEXT = {
     optAutoQuality: '자동',
     cinemaMode: '영화관 모드',
     loopDefault: '자동 재생',
+    loopVideos: '동영상 자동 재생',
+    loopShorts: 'Shorts 자동 재생',
     hideComments: '댓글 숨기기',
     focusVideo: '동영상에만 집중',
     playbackSpeed: '재생 속도',
@@ -1011,6 +1032,8 @@ const UI_TEXT = {
     optAutoQuality: 'Otomatik',
     cinemaMode: 'Sinema Modu',
     loopDefault: 'Otomatik Tekrar',
+    loopVideos: 'Videoları otomatik tekrarla',
+    loopShorts: 'Shorts\'ları otomatik tekrarla',
     hideComments: 'Yorumları Gizle',
     focusVideo: 'Sadece videoya odaklan',
     playbackSpeed: 'Oynatma Hızı',
@@ -1101,6 +1124,8 @@ const UI_TEXT = {
     optAutoQuality: 'ऑटो',
     cinemaMode: 'सिनेमा मोड',
     loopDefault: 'ऑटो रिप्ले',
+    loopVideos: 'वीडियो ऑटो रिप्ले',
+    loopShorts: 'Shorts ऑटो रिप्ले',
     hideComments: 'कमेंट छुपाएं',
     focusVideo: 'केवल वीडियो पर ध्यान दें',
     playbackSpeed: 'प्लेबैक गति',
@@ -1534,7 +1559,7 @@ function initHotkeyRecorder(inputId, btnId, statusId, restoreBtnId) {
 async function incrementSettingStat(key) {
   const candidates = [
     'adBlockEnabled', 'showDislikes', 'deepWorkMode', 'hideShorts',
-    'hideHomeFeed', 'cinemaMode', 'forceCinemaMode', 'loopDefault', 'loopVideo',
+    'hideHomeFeed', 'cinemaMode', 'forceCinemaMode', 'loopDefault', 'autoReplayVideos', 'autoReplayShorts',
     'hideComments', 'hideSidebarRecommendations', 'hideEndscreenRecommendations'
   ];
   if (!candidates.includes(key)) return;
@@ -1554,7 +1579,8 @@ const SETTING_ICONS = {
   cinemaMode: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="15" rx="2" /><path d="M7 18h10" /></svg>',
   forceCinemaMode: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="15" rx="2" /><path d="M7 18h10" /></svg>',
   loopDefault: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l4 4-4 4" /><path d="M3 11v-1a4 4 0 0 1 4-4h14" /><path d="M7 22l-4-4 4-4" /><path d="M21 13v1a4 4 0 0 1-4 4H3" /></svg>',
-  loopVideo: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l4 4-4 4" /><path d="M3 11v-1a4 4 0 0 1 4-4h14" /><path d="M7 22l-4-4 4-4" /><path d="M21 13v1a4 4 0 0 1-4 4H3" /></svg>',
+  autoReplayVideos: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l4 4-4 4" /><path d="M3 11v-1a4 4 0 0 1 4-4h14" /><path d="M7 22l-4-4 4-4" /><path d="M21 13v1a4 4 0 0 1-4 4H3" /></svg>',
+  autoReplayShorts: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l4 4-4 4" /><path d="M3 11v-1a4 4 0 0 1 4-4h14" /><path d="M7 22l-4-4 4-4" /><path d="M21 13v1a4 4 0 0 1-4 4H3" /></svg>',
   hideComments: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /><line x1="3" y1="3" x2="21" y2="21" /></svg>',
   hideSidebarRecommendations: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M9 3v18" /></svg>',
   hideEndscreenRecommendations: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M3 9h18" /><path d="M3 15h18" /></svg>',
@@ -1569,7 +1595,7 @@ async function initQuickAccess() {
   const stats = data.settingStats || {};
   const candidates = [
     'adBlockEnabled', 'showDislikes', 'deepWorkMode', 'hideShorts',
-    'hideHomeFeed', 'cinemaMode', 'forceCinemaMode', 'loopDefault', 'loopVideo',
+    'hideHomeFeed', 'cinemaMode', 'forceCinemaMode', 'loopDefault', 'autoReplayVideos', 'autoReplayShorts',
     'hideComments', 'hideSidebarRecommendations', 'hideEndscreenRecommendations'
   ];
 
@@ -1596,7 +1622,9 @@ async function initQuickAccess() {
       btn.innerHTML = SETTING_ICONS[key] || '';
       const tooltipKey = key === 'deepWorkMode' ? 'deepWork' :
         (key === 'forceCinemaMode' ? 'cinemaMode' :
-          (key === 'loopVideo' ? 'loopDefault' : key));
+          (key === 'autoReplayVideos' ? 'loopVideos' : 
+            (key === 'autoReplayShorts' ? 'loopShorts' : 
+              (key === 'loopVideo' ? 'loopDefault' : key))));
       btn.title = t(tooltipKey);
 
       btn.addEventListener('click', async () => {
