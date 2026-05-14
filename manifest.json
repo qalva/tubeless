@@ -1,0 +1,89 @@
+{
+  "manifest_version": 3,
+  "name": "Tubeless",
+  "version": "3.0.0",
+  "description": "The ultimate open-source control layer for YouTube.",
+  "short_name": "Tubeless",
+  "permissions": [
+    "storage",
+    "alarms",
+    "downloads",
+    "declarativeNetRequest",
+    "scripting",
+    "webRequest",
+    "webNavigation",
+    "tabs",
+    "unlimitedStorage",
+    "cookies"
+  ],
+  "host_permissions": [
+    "*://*.youtube.com/*",
+    "https://returnyoutubedislikeapi.com/*",
+    "http://localhost:8791/*",
+    "https://get.adblock-for-youtube.com/*",
+    "https://api.adblock-for-youtube.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background/background.js"
+  },
+  "icons": {
+    "16": "assets/icon.png",
+    "32": "assets/icon.png",
+    "48": "assets/icon.png",
+    "128": "assets/icon.png",
+    "256": "assets/icon.png",
+    "512": "assets/icon.png"
+  },
+  "action": {
+    "default_title": "Tubeless",
+    "default_popup": "src/popup/popup.html",
+    "default_icon": "assets/icon.png"
+  },
+  "options_page": "src/options/options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.youtube.com/*"
+      ],
+      "exclude_matches": [
+        "https://accounts.google.com/*",
+        "https://mail.google.com/*",
+        "https://*.google.com/accounts/*"
+      ],
+      "js": [
+        "src/content/downloader-bridge.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://*.youtube.com/*"
+      ],
+      "exclude_matches": [
+        "https://accounts.google.com/*",
+        "https://mail.google.com/*",
+        "https://*.google.com/accounts/*"
+      ],
+      "js": [
+        "src/content/content-utils.js",
+        "adblock/contentscript.js",
+        "src/content/content.js",
+        "src/content/drag-drop.js"
+      ],
+      "css": [],
+      "run_at": "document_start",
+      "world": "ISOLATED"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/screenshot.mp3"
+      ],
+      "matches": [
+        "https://*.youtube.com/*"
+      ]
+    }
+  ]
+}
