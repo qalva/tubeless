@@ -47,6 +47,7 @@ A comprehensive toolkit to transform YouTube into a focused workspace. Features 
 8. [Disclaimer](#disclaimer)
 9. [Architecture](#architecture)
 10. [Changelog](#changelog)
+    - [[3.0.1] - 2026-05-15](#301---2026-05-15)
     - [[3.0.0] - 2026-05-14](#300---2026-05-14)
     - [[2.2.0] - 2026-04-29](#220---2026-04-29)
     - [[1.0.0] - 2026-04-28](#100---2026-04-28)
@@ -234,6 +235,13 @@ Event-driven, modular, performance-first design.
 ---
 
 ## Changelog
+
+### [3.0.1] - 2026-05-15
+
+### Improved
+- Context-aware Auto Replay: Now uses independent settings for standard videos and YouTube Shorts.
+- Added localization for Auto Replay sub-settings in all supported languages.
+- Optimized popup performance when detecting content type.
 
 ### [3.0.0] - 2026-05-14
 
