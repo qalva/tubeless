@@ -1,3 +1,17 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  * {
+    font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+  }
+  body, .markdown-body {
+    direction: rtl;
+    text-align: right;
+  }
+</style>
+
 # دليل المستخدم
 
 ---
