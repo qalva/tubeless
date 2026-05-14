@@ -11,7 +11,8 @@ const DEFAULT_SETTINGS = {
   forceCinemaMode: false,
   playbackSpeed: 1,
   hideComments: false,
-  loopVideo: false,
+  autoReplayVideos: false,
+  autoReplayShorts: true,
   deepWorkMode: false,
   hideShortsSearch: false,
   adBlockEnabled: true,
@@ -32,7 +33,7 @@ const DEFAULT_SETTINGS = {
 async function incrementSettingStat(key) {
   const candidates = [
     'adBlockEnabled', 'showDislikes', 'deepWorkMode', 'hideShorts',
-    'hideHomeFeed', 'cinemaMode', 'forceCinemaMode', 'loopDefault', 'loopVideo',
+    'hideHomeFeed', 'cinemaMode', 'forceCinemaMode', 'loopDefault', 'autoReplayVideos', 'autoReplayShorts',
     'hideComments', 'hideSidebarRecommendations', 'hideEndscreenRecommendations'
   ];
   if (!candidates.includes(key)) return;
@@ -1066,11 +1067,20 @@ async function loadSettings() {
     const stored = await chrome.storage.local.get(Object.keys(DEFAULT_SETTINGS));
     const values = { ...DEFAULT_SETTINGS, ...stored };
     localize(values.language);
-    const checkboxes = ['showDislikes', 'hideShorts', 'forceCinemaMode', 'hideComments', 'loopVideo', 'hideSidebarRecommendations', 'hideShortsSearch', 'adBlockEnabled', 'hideEndscreenRecommendations', 'hideHomeFeed'];
+    const checkboxes = ['showDislikes', 'hideShorts', 'forceCinemaMode', 'hideComments', 'hideSidebarRecommendations', 'hideShortsSearch', 'adBlockEnabled', 'hideEndscreenRecommendations', 'hideHomeFeed'];
     checkboxes.forEach(id => {
       const el = getEl(id);
       if (el) el.checked = Boolean(values[id]);
     });
+
+    
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    const isShorts = tab && tab.url && tab.url.includes('/shorts/');
+    const loopEl = getEl('loopVideo');
+    if (loopEl) {
+      loopEl.checked = isShorts ? Boolean(values.autoReplayShorts) : Boolean(values.autoReplayVideos);
+      loopEl.dataset.context = isShorts ? 'shorts' : 'videos';
+    }
 
     
     const qualityLock = values.smartQualityLock || 'auto';
@@ -1361,7 +1371,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  ['showDislikes', 'hideShorts', 'forceCinemaMode', 'hideComments', 'loopVideo', 'hideSidebarRecommendations', 'hideShortsSearch', 'adBlockEnabled', 'hideEndscreenRecommendations', 'hideHomeFeed'].forEach(id => {
+  ['showDislikes', 'hideShorts', 'forceCinemaMode', 'hideComments', 'hideSidebarRecommendations', 'hideShortsSearch', 'adBlockEnabled', 'hideEndscreenRecommendations', 'hideHomeFeed'].forEach(id => {
     getEl(id)?.addEventListener('change', async (e) => {
       const val = e.target.checked;
       await saveSetting(id, val);
@@ -1370,6 +1380,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
       if (id === 'hideShorts') updateShortsDependency();
     });
+  });
+
+  getEl('loopVideo')?.addEventListener('change', async (e) => {
+    const val = e.target.checked;
+    const context = e.target.dataset.context || 'videos';
+    const key = context === 'shorts' ? 'autoReplayShorts' : 'autoReplayVideos';
+    await saveSetting(key, val);
   });
 
   
