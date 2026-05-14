@@ -3,21 +3,21 @@
 ---
 
 # Languages
-* [English](./languages/en.md)
 * [Arabic](./languages/ar.md)
 * [French](./languages/fr.md)
 
 ## Table of Contents
-1. [Getting Started](#-getting-started)
-2. [Productivity & Focus (Deep Work)](#-productivity--focus)
-3. [Video Player Mastery](#-video-player-mastery)
-4. [Media & Downloading](#-media--downloading)
-5. [Screenshots & Picture-in-Picture](#-screenshots--pip)
-6. [Keyboard Shortcuts](#-keyboard-shortcuts)
-7. [Customization & Settings](#-customization--settings)
+1. [Getting Started](#getting-started)
+2. [Productivity & Focus (Deep Work Mode)](#productivity-focus)
+3. [Video Player Mastery](#video-player-mastery)
+4. [Media & Downloading](#media-downloading)
+5. [Screenshots & Picture-in-Picture](#screenshots-pip)
+6. [Keyboard Shortcuts](#keyboard-shortcuts)
+7. [Customization & Settings](#customization-settings)
 
 ---
 
+<a name="getting-started"></a>
 ## Getting Started
 
 ### Opening the Menu
@@ -26,43 +26,43 @@
 
 ---
 
+<a name="productivity-focus"></a>
 ## Productivity & Focus
 
-Tubeless is designed to turn YouTube into a tool, not a trap.
-
 ### Deep Work Mode
-*   **What it does**: Instantly activates all distraction-blocking features.
+*   **What it does**: Activates distraction-blocking features.
 *   **How to use**: Click the "Target" icon in the popup or the sidebar. When active, it hides the home feed, comments, sidebar, and Shorts simultaneously.
 *   **Tip**: Toggle it OFF to quickly see your feed again without losing your individual settings.
 
 ### Cleaning your Feed
-*   **Hide Home Feed**: Replaces the addictive home screen with a clean search bar.
-*   **Hide Shorts**: Removes the Shorts tab and shelves. You can also hide Shorts specifically from search results to keep your feed professional.
-*   **Hide Sidebar**: Removes the list of "Up Next" videos so you focus only on what you're watching.
+*   **Hide Home Feed**: Replaces the home screen with a clean search bar.
+*   **Hide Shorts**: Removes the Shorts tab and shelves. You can also hide Shorts from search results.
+*   **Hide Sidebar**: Removes the list of "Up Next" videos (sidebar recommendations).
 
 ---
 
+<a name="video-player-mastery"></a>
 ## Video Player Mastery
 
 ### Quality Lock
-*   Tired of YouTube dropping your quality to 480p? 
 *   In the **Player** section, select your preferred resolution (e.g., 1080p or 4K). Tubeless will force every video to start at that quality automatically.
 
 ### Return Dislikes
-*   Tubeless brings back the dislike counter using the "Return YouTube Dislike" API.
+*   Tubeless displays the dislike counter using the "Return YouTube Dislike" API.
 *   You can toggle a "Loading placeholder" (`--`) to see when the data is being fetched.
 
 ### Playback Speed Control
-*   Use the slider in the popup for fine-grained control (up to **16x** speed!).
+*   Use the slider in the popup for fine-grained control (up to **16x** speed).
 *   Click the preset buttons (0.5x, 1.5x, 2x, etc.) for quick jumps.
 *   Press the "Reset" icon to return to 1.0x instantly.
 
 ---
 
+<a name="media-downloading"></a>
 ## Media & Downloading
 
 > [!IMPORTANT]
-> To enable downloads, ensure you have <a href="https://www.mediafire.com/file/1aiwbv7mkrukpio/tubeless.exe/file" target="_blank">Tubeless Desktop</a> running on your computer.
+> To enable downloads, ensure you have the **Tubeless Desktop** running on your PC.
 
 ### How to Download
 1.  Open any YouTube video.
@@ -72,21 +72,23 @@ Tubeless is designed to turn YouTube into a tool, not a trap.
 
 ---
 
+<a name="screenshots-pip"></a>
 ## Screenshots & PiP
 
 ### Professional Screenshots
 *   Press **`V`** to capture the current frame.
-*   Tubeless captures the raw video feed, meaning it won't include subtitles or player overlays in your screenshot.
+*   Tubeless captures the raw video feed without subtitles or player overlays.
 *   The image is automatically copied to your clipboard and saved to your computer.
 
 ### Picture-in-Picture (PiP)
-*   Press **`B`** to pop the video out into a floating window. This allows you to work in other tabs while the video stays on top.
+*   Press **`B`** to pop the video out into a floating window (Floating Player).
 
 ---
 
+<a name="keyboard-shortcuts"></a>
 ## Keyboard Shortcuts
 
-Tubeless features powerful single-key hotkeys (active when not typing in a text box):
+Tubeless features single-key hotkeys (active when not typing in a text box):
 
 | Key | Action |
 | :--- | :--- |
@@ -103,16 +105,17 @@ Tubeless features powerful single-key hotkeys (active when not typing in a text 
 
 ---
 
+<a name="customization-settings"></a>
 ## Customization & Settings
 
 ### Theme & Language
-*   **Dark Mode**: Switch between a sleek dark theme and a clean light theme using the moon/sun icon.
+*   **Dark Mode**: Switch between dark and light themes using the moon/sun icon.
 *   **Localization**: Tubeless supports 11+ languages. Change it in the **General** settings.
 
 ### Quick Access
-*   The sidebar in the settings page automatically tracks which settings you use most and pins them to the "Quick Access" row for instant retrieval.
+*   The sidebar in the settings page automatically tracks which settings you use most and pins them to the "Quick Access" row.
 
 ### Data Management
-*   **Export**: Save your settings as a `.json` file to back them up.
+*   **Export**: Save your settings as a `.json` file.
 *   **Import**: Load your saved settings on a new computer.
-*   **Reset Defaults**: Use the "Restore Defaults" button to go back to original settings (this will **not** reset your language or theme preferences).
+*   **Reset Defaults**: Use the "Restore Defaults" button to return to original settings (this will **not** reset your language or theme preferences).
