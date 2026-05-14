@@ -1,12 +1,8 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
-  
-  :root, body, .markdown-body, div, p, h1, h2, h3, h4, h5, h6, li, span, a, td, th {
-    font-family: 'IBM Plex Sans Arabic', sans-serif !important;
-    direction: rtl !important;
-    text-align: right !important;
-  }
 </style>
+
+<div dir="rtl" style="font-family: 'IBM Plex Sans Arabic', sans-serif !important; text-align: right;">
 
 # دليل المستخدم
 
@@ -125,3 +121,5 @@
 *   **تصدير**: حفظ إعداداتك في ملف `.json`.
 *   **استيراد**: تحميل إعداداتك المحفوظة على جهاز كمبيوتر جديد.
 *   **استعادة الافتراضي**: استخدم زر "استعادة الافتراضيات" للعودة إلى الإعدادات الأصلية (هذا **لن** يعيد ضبط تفضيلات اللغة أو المظهر).
+
+</div>
