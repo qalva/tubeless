@@ -18,7 +18,8 @@ const DEFAULT_SETTINGS = {
   forceCinemaMode: false,
   playbackSpeed: 1,
   hideComments: false,
-  loopVideo: false,
+  autoReplayVideos: false,
+  autoReplayShorts: true,
   deepWorkMode: false,
   hideShortsSearch: false,
   adBlockEnabled: true,
@@ -1226,8 +1227,10 @@ function applyVideoAdjustments() {
   if (videos.length > 0) {
     videos.forEach(video => {
       syncPlaybackSpeed(video);
-      if (video.loop !== settingsState.loopVideo) {
-        video.loop = settingsState.loopVideo;
+      const isShorts = window.location.pathname.startsWith('/shorts/');
+      const shouldLoop = isShorts ? settingsState.autoReplayShorts : settingsState.autoReplayVideos;
+      if (video.loop !== shouldLoop) {
+        video.loop = shouldLoop;
       }
     });
   }
