@@ -34,7 +34,7 @@ The extension transforms YouTube into a focused workspace. Features advanced ad-
     - [Playback & Player Enhancements](#playback--player-enhancements)
     - [Media Tools](#media-tools)
     - [Productivity & System Tools](#productivity--system-tools)
-3. [Installation](#installation)
+3. [Download](#download)
 4. [Screenshots](#screenshots)
     - [Deep Work Mode](#deep-work-mode)
     - [Floating Player Experience](#floating-player-experience)
@@ -108,7 +108,7 @@ The extension transforms YouTube into a focused workspace. Features advanced ad-
 
 ---
 
-## Installation
+## Download
 
 1. Download the [Tubeless Extension](https://github.com/qalva/tubeless/releases/latest) from the releases page and extract the zip file. 
 2. Download the [Tubeless Desktop](https://www.mediafire.com/file/vi8tolbhgvq2974/TubelessSetup-1.0.1.exe/file) app to unlock media downloading in the Tubeless Extension. 
@@ -220,7 +220,7 @@ The extension transforms YouTube into a focused workspace. Features advanced ad-
 
 - Fully local-first execution  
 - No telemetry or tracking  
-- No external servers. The Tubeless Desktop app acts as a local-only server to download media on your machine. 
+- No external servers. The [Tubeless Desktop](https://www.mediafire.com/file/vi8tolbhgvq2974/TubelessSetup-1.0.1.exe/file) app acts as a local-only server to download media on your machine. 
 - No data collection  
 
 Permissions are strictly functional:
