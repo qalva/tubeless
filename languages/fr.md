@@ -66,6 +66,11 @@
 3.  Sélectionnez votre format : **Vidéo** (avec options de qualité), **Audio Uniquement**, ou **Miniature**.
 4.  Le fichier sera sauvegardé avec un nom intelligent (Titre + Horodatage).
 
+### Téléchargement par Glisser-Déposer
+*   **Accélérez votre flux de travail** : Vous pouvez faire glisser n'importe quel lien vidéo YouTube, miniature ou même le lecteur lui-même.
+*   **Comment ça marche** : Dès que vous commencez à faire glisser un élément, une zone "Déposer pour télécharger" apparaîtra sur votre écran. Déposez l'élément ici pour lancer le téléchargement immédiatement.
+*   **Annuler** : Déposez l'élément dans la zone "Annuler" pour annuler l'action.
+
 ### Emplacements de téléchargement par défaut
 Les fichiers sont enregistrés dans votre dossier **Downloads**, organisés par type :
 *   **Vidéos** : `Downloads/Video`
