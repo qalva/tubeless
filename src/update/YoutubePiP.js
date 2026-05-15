@@ -31,7 +31,9 @@ function FTV_style() {
 }
 
 function FTV_feature_PiP() {
-    let t = document.querySelector(".ytp-pip-button.ytp-button");
+    let t = document.querySelector('button[data-tooltip-target-id="ytp-pip-button"]') ||
+            document.querySelector('.ytp-pip-button.ytp-button');
+    if (!t) return;
     t.style.display = "", t.querySelector("svg path").style.fill = "red", t.querySelector("svg").style.padding = "0", t.querySelector("svg path").style.transform = "scale(0.8) translate(5px, 5px)"
 }
 
@@ -70,11 +72,12 @@ function getFTVText(key) {
 function FTV_feature_screenshot(isShorts) {
     const container = isShorts 
         ? document.querySelector('ytd-reel-video-renderer[is-active] #actions') 
-        : document.querySelector(".ytp-right-controls");
+        : document.querySelector('#movie_player .ytp-right-controls') || document.querySelector('.ytp-right-controls');
     
     if (!container || (isShorts && container.querySelector('#FTV_screenshot'))) return;
 
-    const e = isShorts ? null : document.querySelector(".ytp-pip-button"),
+    const e = isShorts ? null : (document.querySelector('button[data-tooltip-target-id="ytp-pip-button"]') ||
+                                  document.querySelector('.ytp-pip-button')),
         n = document.createElement("button");
     n.id = "FTV_screenshot", n.className = "ytp-button";
     
@@ -102,8 +105,8 @@ function FTV_canvas() {
                 document.querySelector('ytd-shorts video') || 
                 document.querySelector('#shorts-container video');
     } else {
-        video = document.querySelector('video.html5-main-video') || 
-                document.querySelector('#movie_player video') || 
+        video = document.querySelector('#movie_player video') || 
+                document.querySelector('video.html5-main-video') || 
                 document.querySelector('video');
     }
     
