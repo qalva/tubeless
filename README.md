@@ -34,14 +34,14 @@ A comprehensive toolkit to transform YouTube into a focused workspace. Features 
     - [Playback & Player Enhancements](#playback--player-enhancements)
     - [Media Tools](#media-tools)
     - [Productivity & System Tools](#productivity--system-tools)
-3. [Screenshots](#screenshots)
+3. [Installation](#installation)
+4. [Screenshots](#screenshots)
     - [Deep Work Mode](#deep-work-mode)
     - [Floating Player Experience](#floating-player-experience)
     - [Settings Dashboard](#settings-dashboard)
     - [Popup Interface](#popup-interface)
     - [In-Page Control](#in-page-control)
     - [Screenshot System](#screenshot-system)
-4. [Installation](#installation)
 5. [Supported Browsers](#supported-browsers)
 6. [Supported OS](#supported-os)
 7. [Privacy & Security](#privacy--security)
@@ -105,6 +105,18 @@ A comprehensive toolkit to transform YouTube into a focused workspace. Features 
 - Local-First Privacy: Zero telemetry, zero tracking, zero external servers  
 - Factory Reset: One-click restoration of all default settings  
 - Debug Mode: Advanced logging for troubleshooting and transparency  
+
+---
+
+## Installation
+
+1. Download the [Tubeless Extension](https://github.com/qalva/tubeless/releases/latest) from the releases page. 
+2. Download the [Tubeless Desktop](https://www.mediafire.com/file/vi8tolbhgvq2974/TubelessSetup-1.0.1.exe/file) app to unlock media downloading in the Tubeless Extension. 
+3. Open Chrome / Edge / Brave  
+4. Toggle the three dots button in the toolbar and click on "Extensions" then click on "Manage Extensions" or navigate to `browser_name://extensions` (e.g., `chrome://extensions`) to reach the extensions page
+5. In extensions page, enable Developer Mode  
+6. Click on the "Load unpacked" button
+7. Select the extension folder directory (the main folder containing manifest.json) to install the Tubeless Extension. 
 
 ---
 
@@ -181,18 +193,6 @@ A comprehensive toolkit to transform YouTube into a focused workspace. Features 
 <p align="center">
   <img src="assets/screenshots/screenshot_shortcut.png" width="90%" />
 </p>
-
----
-
-## Installation
-
-1. Download the [Tubeless Extension](https://github.com/qalva/tubeless/releases/latest) from the releases page. 
-2. Download the [Tubeless Desktop](https://www.mediafire.com/file/vi8tolbhgvq2974/TubelessSetup-1.0.1.exe/file) app to unlock media downloading in the Tubeless Extension. 
-3. Open Chrome / Edge / Brave  
-4. Toggle the three dots button in the toolbar and click on "Extensions" then click on "Manage Extensions" or navigate to `browser_name://extensions` (e.g., `chrome://extensions`) to reach the extensions page
-5. In extensions page, enable Developer Mode  
-6. Click on the "Load unpacked" button
-7. Select the extension folder directory (the main folder containing manifest.json) to install the Tubeless Extension. 
 
 ---
 
