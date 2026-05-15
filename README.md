@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  Block ads, restore dislikes, and download media via <a href="https://www.mediafire.com/file/1aiwbv7mkrukpio/tubeless.exe/file" target="_blank">Tubeless Desktop</a>.
+  Block ads, restore dislikes, and download media via <a href="https://www.mediafire.com/file/vi8tolbhgvq2974/TubelessSetup-1.0.1.exe/file" target="_blank">Tubeless Desktop</a>.
 </p>
 
 <p align="center">
