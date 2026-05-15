@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-3.0.1-blue.svg" />
+  <img src="https://img.shields.io/badge/version-4.0.0-blue.svg" />
   <img src="https://img.shields.io/badge/license-MIT-green.svg" />
 </p>
 
@@ -47,6 +47,7 @@ A comprehensive toolkit to transform YouTube into a focused workspace. Features 
 8. [Disclaimer](#disclaimer)
 9. [Architecture](#architecture)
 10. [Changelog](#changelog)
+    - [[4.0.0] - 2026-05-15](#400---2026-05-15)
     - [[3.0.1] - 2026-05-15](#301---2026-05-15)
     - [[3.0.0] - 2026-05-14](#300---2026-05-14)
     - [[2.2.0] - 2026-04-29](#220---2026-04-29)
@@ -63,6 +64,9 @@ A comprehensive toolkit to transform YouTube into a focused workspace. Features 
 - Shorts Control: Remove Shorts from feeds and search  
 - Comment Blocking: Optional comment removal  
 - Endscreen Suppression: Remove recommendation overlays  
+- Ad-Blocking: Zero-latency removal of all YouTube ads  
+- Hide Sidebar: Remove the "Up Next" recommendation list  
+- Hide Shorts in Search: Filter out Shorts from your search results  
 
 ---
 
@@ -72,15 +76,20 @@ A comprehensive toolkit to transform YouTube into a focused workspace. Features 
 - Cinema Mode: Wide immersive player experience  
 - Auto Replay: Loop videos automatically  
 - Precision Speed Control: 0.1x to 3.0x+ playback  
+- Dislike Restoration: Restore the dislike counter using the RYD API  
+- Contextual Auto Replay: Independent loop controls for Videos and Shorts  
 
 ---
 
 ### Media Tools
 
 - Built-in Downloader: Video, audio, subtitles, thumbnails (Requires <a href="https://www.mediafire.com/file/1aiwbv7mkrukpio/Tubeless_Desktop.exe/file" target="_blank">Tubeless Desktop</a>)  
+- Drag & Drop Download: Drag any video link or element to download instantly  
 - Playlist Download Mode: Batch downloads  
 - Screenshot Capture: High-quality frame extraction  
 - Picture-in-Picture Enhancements: Floating video support  
+- Smart Filenaming: Downloads automatically titled with video name and timestamp  
+- Screenshot Audio: Optional shutter sound feedback on capture  
 
 ---
 
@@ -91,6 +100,10 @@ A comprehensive toolkit to transform YouTube into a focused workspace. Features 
 - Theme System: Light & dark modes  
 - Multi-language Support: English, Arabic (RTL), French  
 - Import / Export: JSON configuration sync  
+- Settings Search: Real-time search engine for all extension options  
+- Local-First Privacy: Zero telemetry, zero tracking, zero external servers  
+- Factory Reset: One-click restoration of all default settings  
+- Debug Mode: Advanced logging for troubleshooting and transparency  
 
 ---
 
@@ -236,6 +249,21 @@ Event-driven, modular, performance-first design.
 
 ## Changelog
 
+### [4.0.0] - 2026-05-15
+
+### Major Release: Production Hardening & Synchronization
+
+### Fixed
+- Settings Synchronization: Resolved `DEFAULT_SETTINGS` desync across all components (30 keys now fully synced).
+- Bug: Fixed `debug` mode suppression that prevented log output.
+- Bug: Fixed null-pointer crash in Picture-in-Picture (`YoutubePiP.js`) during specific page states.
+
+### Improved
+- Architecture Refactor: Re-implemented `MutationObserver` with `ytd-app` scoping and 150ms debouncing for superior performance.
+- Selector Stability: Switched to ID and Web Component-based selectors to prevent breakage from YouTube UI updates.
+- Self-Mutation Protection: Added `safeInject()` and ID prefix filtering to prevent the extension from observing its own UI changes.
+- UI Performance: Integrated `requestAnimationFrame` and Shadow DOM for smoother, isolated interface rendering.
+
 ### [3.0.1] - 2026-05-15
 
 ### Improved
@@ -268,6 +296,7 @@ This release redefines Tubeless as a complete YouTube productivity and focus wor
 - Theme System Upgrade: Refined light and dark UI modes with improved consistency
 - Multi-language Support Expansion: Added RTL support and improved localization structure
 - Import / Export System: JSON-based configuration backup and cross-device syncing
+- Drag & Drop Download: Simply drag any video link, thumbnail, or player element to the "Download Zone" to download instantly
 
 ### Improved
 - Extension architecture refactored for better modular separation
