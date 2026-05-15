@@ -15,6 +15,7 @@ const DEFAULT_SETTINGS = {
   hideSidebarRecommendations: false,
   hideEndscreenRecommendations: false,
   darkMode: false,
+  debug: false,
   forceCinemaMode: false,
   playbackSpeed: 1,
   hideComments: false,
@@ -32,7 +33,9 @@ const DEFAULT_SETTINGS = {
   screenshotSoundEnabled: true,
   defaultDownloadQuality: 'best',
   hideShortsSearchManual: false,
-  playlistDownloadEnabled: true
+  playlistDownloadEnabled: true,
+  sidebarCollapsed: false,
+  settingStats: {}
 };
 
 const runtime = typeof chrome !== 'undefined' && chrome.runtime
@@ -41,7 +44,9 @@ const runtime = typeof chrome !== 'undefined' && chrome.runtime
 
 const utils = (typeof window !== 'undefined' && window.YTPlusUtils) || {
   getVideoIdFromLocation: () => null,
-  formatNumber: value => String(value)
+  formatNumber: value => String(value),
+  waitForElement: () => Promise.resolve(null),
+  debounce: (fn) => fn
 };
 
 const settingsState = { ...DEFAULT_SETTINGS };
@@ -125,21 +130,16 @@ const selectors = {
       '#related'
     ],
     endscreenRecommendations: [
-      '.ytp-ce-element',
-      '.ytp-ce-video',
-      '.ytp-ce-channel',
-      '.ytp-ce-playlist',
-      '.ytp-ce-website',
-      '.ytp-ce-merchandise',
-      '.ytp-endscreen-content',
-      '.ytp-videowall-still',
-      '.ytp-modern-videowall-still',
-      '.html5-endscreen',
-      '.ytp-suggestion-set'
+      // Stable: scoped to #movie_player, uses attribute-contains for resilience
+      '#movie_player [class*="ytp-ce-"]',
+      '#movie_player .ytp-endscreen',
+      '#movie_player [class*="endscreen"]',
+      '#movie_player [class*="videowall"]',
+      '#movie_player [class*="suggestion"]'
     ],
     comments: ['#comments', 'ytd-comments'],
-    player: 'video.html5-main-video',
-    cinemaButton: '.ytp-size-button',
+    player: '#movie_player video, ytd-player video, video.html5-main-video',
+    cinemaButton: 'button[data-tooltip-target-id="ytp-size-button"], .ytp-size-button',
     skeletons: [
       'ytd-shell-renderer',
       '#home-page-skeleton',
@@ -147,9 +147,9 @@ const selectors = {
       '#watch-skeleton',
       '#shimmer-container',
       '#shimmer-card',
-      '.ytd-ghost-cards-renderer',
-      '.ytp-placeholder',
-      '.ytd-search-pyv-renderer-skeleton'
+      '[class*="ghost-card"]',
+      'ytd-player [class*="placeholder"]',
+      'ytd-search [class*="skeleton"]'
     ],
     premiumPromotions: [
       'ytd-mealbar-promo-renderer',
@@ -180,12 +180,12 @@ const selectors = {
     html:not(.ytd-shell-ready) #shorts-container,
     html:not(.ytd-shell-ready) #home-page-skeleton,
     html:not(.ytd-shell-ready) #watch-skeleton,
-    html:not(.ytd-shell-ready) .ytd-ghost-cards-renderer,
+    html:not(.ytd-shell-ready) [class*="ghost-card"],
     html:not(.ytd-shell-ready) ytd-shell-renderer,
     html:not(.ytd-shell-ready) #shimmer-container,
     html:not(.ytd-shell-ready) #shimmer-card,
-    html:not(.ytd-shell-ready) .ytp-placeholder,
-    html:not(.ytd-shell-ready) .ytd-search-pyv-renderer-skeleton,
+    html:not(.ytd-shell-ready) ytd-player [class*="placeholder"],
+    html:not(.ytd-shell-ready) ytd-search [class*="skeleton"],
     html:not(.ytd-shell-ready) .yt-skeleton,
     html:not(.ytd-shell-ready) .rich-grid-skeleton-renderer,
     html:not(.ytd-shell-ready) #spinner {
@@ -430,7 +430,11 @@ function scheduleRenderBadge(text) {
 }
 
 async function onVideoChange(videoId) {
-  if (!videoId) return;
+  if (!videoId) {
+    state.currentVideoId = null;
+    state.currentDislikes = null;
+    return;
+  }
 
   
   if (settingsState.showDislikes) {
@@ -478,19 +482,23 @@ async function onVideoChange(videoId) {
 
 function handleNavigationChange() {
   const newId = getVideoId();
-  if (!newId || newId === state.currentVideoId) return;
 
-  if (newId !== lastVideoId) {
-    lastVideoId = newId;
+  if (newId !== state.currentVideoId) {
+    if (newId && newId !== lastVideoId) {
+      lastVideoId = newId;
+    }
+
+    void onVideoChange(newId);
+
+    if (chrome.runtime?.id && newId) {
+      chrome.runtime.sendMessage({ action: 'YTPLUS_VIDEO_CHANGED', videoId: newId }).catch(() => { });
+    }
   }
 
-  void onVideoChange(newId);
+  // Always run these on any navigation (including non-video pages like /results)
   applyVideoAdjustments();
-
-  
-  if (chrome.runtime?.id) {
-    chrome.runtime.sendMessage({ action: 'YTPLUS_VIDEO_CHANGED', videoId: newId }).catch(() => { });
-  }
+  injectInstantStyles();
+  sweepShorts();
 }
 
 
@@ -1047,6 +1055,10 @@ function startNavigationWatchers() {
 function startContinuousInsertion() {
   setInterval(() => {
     applyVideoAdjustments();
+    // Safety net: re-inject styles if YouTube cleared them
+    if (!document.getElementById('ytd-enhanced-styles-internal')) {
+      injectInstantStyles();
+    }
     if (!settingsState.showDislikes) return;
 
     // Show current count if available, otherwise show placeholder if enabled
@@ -1089,28 +1101,44 @@ function applyProductivityFilters() {
   injectInstantStyles();
 }
 
+// ---------------------------------------------------------------------------
+//  MutationObserver — watches full document for YouTube DOM changes.
+//  Uses ID-prefix filter to skip mutations caused by our own elements.
+//  Debounced to prevent excessive re-processing.
+// ---------------------------------------------------------------------------
+function _isOwnNode(node) {
+  if (node.nodeType !== 1) return true; // skip text nodes
+  const id = node.id;
+  return id && (id.startsWith('ytplus-') || id.startsWith('ytd-enhanced') || id === 'ytplus-toast');
+}
+
 function initSafeAdBlock() {
-  if (!settingsState.hideHomeFeed &&
-    !settingsState.hideShorts &&
-    !settingsState.hideSidebarRecommendations &&
-    !settingsState.hideEndscreenRecommendations) {
-    return;
-  }
   applyProductivityFilters();
   applyVideoAdjustments();
   sweepShorts();
-  let adDebounceTimer = null;
-  const adObserver = new MutationObserver(() => {
-    if (adDebounceTimer) return;
-    adDebounceTimer = setTimeout(() => {
-      applyProductivityFilters();
-      applyVideoAdjustments();
-      sweepShorts();
-      // Ensure styles are still there (YouTube might clear head)
-      injectInstantStyles();
-      adDebounceTimer = null;
-    }, 150); // Debounce to prevent layout thrashing
+
+  const debouncedHandler = utils.debounce(() => {
+    applyProductivityFilters();
+    applyVideoAdjustments();
+    sweepShorts();
+    injectInstantStyles();
+  }, 150);
+
+  const adObserver = new MutationObserver((mutations) => {
+    // Check if any mutation involves non-extension DOM changes
+    const isRelevant = mutations.some(m => {
+      for (const node of m.addedNodes) {
+        if (!_isOwnNode(node)) return true;
+      }
+      for (const node of m.removedNodes) {
+        if (!_isOwnNode(node)) return true;
+      }
+      return false;
+    });
+
+    if (isRelevant) debouncedHandler();
   });
+
   const target = document.body || document.documentElement;
   adObserver.observe(target, { childList: true, subtree: true });
 }
@@ -1168,7 +1196,7 @@ function injectInstantStyles() {
   }
 
   const styles = [
-    '.ytp-free-preview-countdown-timer { display: none !important; visibility: hidden !important; }',
+    '[class*="free-preview-countdown"] { display: none !important; visibility: hidden !important; }',
     '#ytplus-dislike-shadow { display: inline-flex !important; align-items: center !important; vertical-align: middle !important; margin-left: 6px !important; margin-right: 4px !important; min-width: max-content !important; }',
     'ytd-watch-flexy[fullscreen] #ytplus-dislike-shadow, ytd-watch-flexy[fullscreen] .ydc-dislike-count { display: none !important; }',
     'button:has(#ytplus-dislike-shadow), [role="button"]:has(#ytplus-dislike-shadow) { width: auto !important; min-width: unset !important; padding-right: 8px !important; overflow: visible !important; }',
