@@ -70,6 +70,11 @@
 3.  Select your format: **Video** (with quality options), **Audio Only**, or **Thumbnail**.
 4.  The file will be saved with a "Smart Filename" (Title + Timestamp).
 
+### Drag & Drop Download
+*   **Speed up your workflow**: You can drag any YouTube video link, thumbnail, or even the player itself.
+*   **How it works**: Once you start dragging, a "Drop to Download" zone will appear on your screen. Drop the item there to start the download immediately.
+*   **Cancel**: Drop the item in the "Cancel" zone to abort.
+
 ### Default Download Locations
 Files are saved in your **Downloads** folder, organized by type:
 *   **Videos**: `Downloads/Video`
