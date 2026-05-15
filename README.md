@@ -30,10 +30,6 @@ The extension transforms YouTube into a focused workspace. Features advanced ad-
 
 1. [User Guide](./GUIDE.md)
 2. [Features](#features)
-    - [Focus & Distraction Control](#focus--distraction-control)
-    - [Playback & Player Enhancements](#playback--player-enhancements)
-    - [Media Tools](#media-tools)
-    - [Productivity & System Tools](#productivity--system-tools)
 3. [Download](#download)
 4. [Screenshots](#screenshots)
     - [Deep Work Mode](#deep-work-mode)
