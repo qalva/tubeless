@@ -13,6 +13,7 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/qalva/tubeless/releases/latest"><img src="https://img.shields.io/badge/download-latest-orange.svg" /></a>
   <img src="https://img.shields.io/badge/version-4.0.0-blue.svg" />
   <img src="https://img.shields.io/badge/license-MIT-green.svg" />
 </p>
