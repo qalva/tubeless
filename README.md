@@ -117,7 +117,7 @@ The extension transforms YouTube into a focused workspace. Features advanced ad-
 5. In extensions page, enable Developer Mode  
 6. Click on the "Load unpacked" button
 7. Select the extracted folder directory (the main folder containing manifest.json) to install the Tubeless Extension. 
-8. press on the extensions icon in the toolbar and then Pin the extension to the toolbar for quick access.
+8. Press on the extensions icon in the toolbar and then pin the extension to the toolbar for quick access.
 
 ---
 
