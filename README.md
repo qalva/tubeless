@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <b>The ultimate open-source control layer for YouTube.</b>
+  <b>The open-source control layer for YouTube.</b>
 </p>
 
 <p align="center">
