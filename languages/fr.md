@@ -64,7 +64,6 @@
 1.  Ouvrez n'importe quelle vidéo YouTube.
 2.  Cliquez sur le bouton **Télécharger** dans le popup.
 3.  Sélectionnez votre format : **Vidéo** (avec options de qualité), **Audio Uniquement**, ou **Miniature**.
-4.  Le fichier sera sauvegardé avec un nom intelligent (Titre + Horodatage).
 
 ### Téléchargement par Glisser-Déposer
 *   **Accélérez votre flux de travail** : Vous pouvez faire glisser n'importe quel lien vidéo YouTube, miniature ou même le lecteur lui-même.
