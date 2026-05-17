@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Tubeless",
-  "version": "4.0.0",
-  "description": "The ultimate open-source control layer for YouTube.",
+  "version": "4.0.1",
+  "description": "The open-source control layer for YouTube.",
   "short_name": "Tubeless",
   "permissions": [
     "storage",
