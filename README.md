@@ -256,7 +256,7 @@ Event-driven, modular, performance-first design.
 ### [4.0.1] - 2026-05-17
 
 ### Added
-- Ctrl + C Copy Frame: Added standard keyboard shortcut (`Ctrl + C` / `Cmd + C`) to instantly copy the video frame to the clipboard without triggering a download (with smart typing and text selection safety rules).
+- Ctrl + C Copy Frame: Added standard keyboard shortcut (`Ctrl + C` / `Cmd + C`) to instantly copy the video frame to the clipboard. 
 
 ### [4.0.0] - 2026-05-15
 
