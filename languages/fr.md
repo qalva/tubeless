@@ -88,6 +88,7 @@ Les fichiers sont enregistrés dans votre dossier **Downloads**, organisés par 
 *   Appuyez sur **`V`** pour capturer l'image actuelle.
 *   Tubeless capture le flux vidéo brut sans les sous-titres ni les superpositions du lecteur.
 *   L'image est automatiquement copiée dans votre presse-papiers et enregistrée sur votre ordinateur.
+*   Appuyez sur **`Ctrl + C`** pour copier uniquement l'image actuelle dans votre presse-papiers.
 
 ### Picture-in-Picture (PiP)
 *   Appuyez sur **`B`** pour détacher la vidéo dans une fenêtre flottante (Lecteur flottant).
@@ -105,6 +106,7 @@ Tubeless propose des raccourcis à touche unique (actifs lorsque vous ne tapez p
 | **`V`** | Prendre une capture d'écran |
 | **`B`** | Lecteur flottant (PiP) |
 | **`O`** | Ouvrir la page des paramètres |
+| **`Ctrl + C`** | Copier l'image dans le presse-papiers |
 
 ### Modifier les raccourcis
 1.  Allez dans la section **Médias & Raccourcis** des paramètres.
