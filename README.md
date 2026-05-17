@@ -111,14 +111,15 @@ The extension transforms YouTube into a focused workspace. Features advanced ad-
 
 ## Download
 
-1. Download the [Tubeless Extension](https://github.com/qalva/tubeless/releases/latest) from the Releases page, scroll to the bottom of the latest release, then click the `.zip` file in the **Assets** section to download it.
-2. Download and install the [Tubeless Desktop](https://www.mediafire.com/file/vi8tolbhgvq2974/TubelessSetup-1.0.1.exe/file) app to unlock media downloading in the Tubeless Extension. 
-3. Open your browser (Chrome / Edge / Brave). 
-4. Toggle the three dots button in the toolbar and click on "Extensions" then click on "Manage Extensions" or navigate to `chrome://extensions` to reach the extensions page
-5. In extensions page, enable Developer Mode  
-6. Click on the "Load unpacked" button
-7. Select the extracted folder directory (the main folder containing manifest.json) to install the Tubeless Extension. 
-8. Press on the extensions icon in the toolbar and then pin the extension to the toolbar for quick access.
+### 1. Download Files
+* Download the [Tubeless Extension](https://github.com/qalva/tubeless/releases/latest) **`.zip`** file from the Releases page and extract it.
+* Download and install the [Tubeless Desktop](https://www.mediafire.com/file/vi8tolbhgvq2974/TubelessSetup-1.0.1.exe/file) app to enable downloading.
+### 2. Install the Extension
+* Open your browser and go to: `chrome://extensions`
+* Turn on **Developer Mode** (top right).
+* Click **Load unpacked** and select the extracted folder (containing `manifest.json`).
+### 3. Quick Access
+* Click the extensions icon in the toolbar and **Pin** the extension for quick access.
 
 ---
 
