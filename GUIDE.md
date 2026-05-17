@@ -92,6 +92,7 @@ Files are saved in your **Downloads** folder, organized by type:
 *   Press **`V`** to capture the current frame.
 *   Tubeless captures the raw video feed without subtitles or player overlays.
 *   The image is automatically copied to your clipboard and saved to your computer.
+*   Press **`Ctrl + C`** to copy only the current frame to your clipboard.
 
 ### Picture-in-Picture (PiP)
 *   Press **`B`** to pop the video out into a floating window (Floating Player).
@@ -109,6 +110,7 @@ Tubeless features single-key hotkeys (active when not typing in a text box):
 | **`V`** | Take Screenshot |
 | **`B`** | Floating Player (PiP) |
 | **`O`** | Open Settings Page |
+| **`Ctrl + C`** | Copy Frame to Clipboard |
 
 ### Changing Hotkeys
 1.  Go to the **Media & Shortcuts** section in Settings.
