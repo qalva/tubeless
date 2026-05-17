@@ -82,7 +82,7 @@ const selectors = {
       'ytd-page-manager ytd-browse[page-subtype="home"] #primary'
     ],
     shorts: [
-      
+
       'ytd-guide-entry-renderer:has(a[title="Shorts"])',
       'ytd-mini-guide-entry-renderer:has(a[title="Shorts"])',
       'ytd-guide-entry-renderer:has(a[href="/shorts"])',
@@ -91,12 +91,12 @@ const selectors = {
       '#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer[title="Shorts"]',
       'ytd-guide-entry-renderer:has(yt-icon[type="shorts"])',
 
-      
+
       'ytd-reel-shelf-renderer',
       'ytd-rich-shelf-renderer[is-shorts]',
       'yt-horizontal-list-renderer:has(ytd-reel-item-renderer)',
 
-      
+
       'ytd-rich-item-renderer:has(a[href^="/shorts/"])',
       'ytd-video-renderer:has(a[href^="/shorts/"])',
       'ytd-grid-video-renderer:has(a[href^="/shorts/"])',
@@ -107,7 +107,7 @@ const selectors = {
       'ytd-rich-grid-slim-media',
       'ytd-rich-item-renderer:has(ytd-rich-grid-slim-media)',
 
-      
+
       '#shorts-container',
       'ytd-tab-renderer:has(div[title="Shorts"])',
       'ytd-tab-renderer:has(div[title="short"])',
@@ -171,8 +171,8 @@ const selectors = {
 (function preEmptiveBlackout() {
   const style = document.createElement('style');
   style.id = 'ytd-initial-render-styles';
-  
-  
+
+
   style.textContent = `
     html:not(.ytd-shell-ready) ytd-rich-grid-renderer,
     html:not(.ytd-shell-ready) ytd-reel-shelf-renderer,
@@ -211,7 +211,7 @@ async function loadSettings() {
     if (settingsLoadResolver) settingsLoadResolver();
   } catch (err) {
     log('warn', 'Could not load settings from storage:', err);
-    settingsLoaded = true; 
+    settingsLoaded = true;
     if (settingsLoadResolver) settingsLoadResolver();
   }
 }
@@ -244,7 +244,7 @@ function watchSettingsChanges() {
         if (changes.hideShorts.newValue) {
           videos.forEach(v => v.pause());
         } else {
-          
+
           const mainVideo = document.querySelector('ytd-reel-video-renderer[is-active] video') || videos[0];
           if (mainVideo) mainVideo.play().catch(() => { });
         }
@@ -254,7 +254,7 @@ function watchSettingsChanges() {
     injectInstantStyles();
     applyVideoAdjustments();
 
-    
+
     window.dispatchEvent(new CustomEvent('YTPLUS_SETTINGS_UPDATED', { detail: settingsState }));
   });
 }
@@ -269,7 +269,7 @@ async function fetchDislikesRaw(videoId, retries = 2, delay = 1000) {
       const response = await fetch(`${API_URL}?videoId=${videoId}`);
 
       if (response.status === 503 && i < retries) {
-        
+
         await new Promise(resolve => setTimeout(resolve, delay * Math.pow(2, i)));
         continue;
       }
@@ -280,7 +280,7 @@ async function fetchDislikesRaw(videoId, retries = 2, delay = 1000) {
       return typeof data.dislikes === 'number' ? data.dislikes : null;
     } catch (err) {
       if (i === retries) throw err;
-      
+
       await new Promise(resolve => setTimeout(resolve, delay));
     }
   }
@@ -290,7 +290,7 @@ async function fetchDislikesRaw(videoId, retries = 2, delay = 1000) {
 async function fetchDislikes(videoId) {
   const now = Date.now();
 
-  
+
   for (const [key, val] of dislikeCache.entries()) {
     if (val.expiresAt <= now) dislikeCache.delete(key);
   }
@@ -329,7 +329,7 @@ function findDislikeButtonContainer() {
   }
 
   const watchRoot = document.querySelector('ytd-watch-flexy');
-  
+
   const metadata = document.querySelector('ytd-watch-metadata');
 
   for (const sel of selectors.dislikeContainers) {
@@ -338,15 +338,15 @@ function findDislikeButtonContainer() {
       if (!el || !el.isConnected) continue;
       if (el.closest('ytd-comment-thread-renderer') || el.closest('#comments')) continue;
 
-      
+
       if (!isShorts && watchRoot && !watchRoot.contains(el)) continue;
 
       if (el.getClientRects().length === 0) continue;
 
       const innerButton = el.querySelector('button');
       if (innerButton) {
-        
-        
+
+
         if (isShorts) {
           const wrapper = el.querySelector('a.yt-simple-endpoint');
           if (wrapper) return wrapper;
@@ -362,7 +362,7 @@ function findDislikeButtonContainer() {
 
 function clearExistingCount() {
   document.querySelectorAll('.ydc-dislike-count, #ytplus-dislike-shadow, .ytplus-shorts-dislike-count').forEach(el => el.remove());
-  
+
   document.querySelectorAll('[data-original-text]').forEach(el => {
     el.textContent = el.dataset.originalText;
     el.classList.remove('ytplus-shorts-dislike-label');
@@ -376,7 +376,7 @@ function renderBadgeText(text) {
   const container = findDislikeButtonContainer();
   if (!container) return false;
 
-  
+
   if (window.location.pathname.startsWith('/shorts/')) {
     let badge = container.querySelector('.ytplus-shorts-dislike-count');
     if (!badge) {
@@ -385,7 +385,7 @@ function renderBadgeText(text) {
       container.appendChild(badge);
     }
     badge.textContent = text;
-    
+
     container.querySelectorAll('#ytplus-dislike-shadow').forEach(e => e.remove());
     return true;
   }
@@ -436,7 +436,7 @@ async function onVideoChange(videoId) {
     return;
   }
 
-  
+
   if (settingsState.showDislikes) {
     if (videoId === state.currentVideoId && state.currentDislikes !== null) {
       scheduleRenderBadge(utils.formatNumber(state.currentDislikes));
@@ -444,7 +444,7 @@ async function onVideoChange(videoId) {
       state.currentVideoId = videoId;
       state.currentDislikes = null;
 
-      
+
       if (settingsState.showLoadingState) {
         scheduleRenderBadge('...');
       }
@@ -464,9 +464,9 @@ async function onVideoChange(videoId) {
     }
   }
 
-  
+
   try {
-    
+
     setTimeout(async () => {
       const currentId = getVideoId();
       if (videoId !== currentId) return;
@@ -474,7 +474,7 @@ async function onVideoChange(videoId) {
       if (meta && meta.qualities && meta.qualities.length > 0) {
         pageActiveMetadata = meta;
       }
-    }, 1200); 
+    }, 1200);
   } catch (err) {
     pageActiveMetadata = null;
   }
@@ -511,7 +511,7 @@ function ytPlusGetVideoMetadata(retries = 3) {
         window.removeEventListener('YTPLUS_RESPONSE_METADATA_INTERNAL', onMetadataResponse);
         if (attempt < retries) {
           attempt++;
-          setTimeout(executeFetch, 400); 
+          setTimeout(executeFetch, 400);
         } else {
           resolve(null);
         }
@@ -523,7 +523,7 @@ function ytPlusGetVideoMetadata(retries = 3) {
         if (e.detail) {
           resolve(e.detail);
         } else if (attempt < retries) {
-          
+
           attempt++;
           setTimeout(executeFetch, 400);
         } else {
@@ -561,7 +561,7 @@ document.addEventListener('click', handleDislikeInteraction, true);
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'YTPLUS_GET_METADATA') {
     ytPlusGetVideoMetadata().then(sendResponse);
-    return true; 
+    return true;
   }
 });
 
@@ -575,7 +575,8 @@ const CONTENT_TEXT = {
     dropToCancel: 'Cancel',
     dragSubtext: 'Video • Shorts • Playlist',
     frameCaptured: 'Screenshot captured',
-    screenshotTitle: 'YouTube Screenshot'
+    screenshotTitle: 'YouTube Screenshot',
+    frameCopied: 'Copied'
   },
   ar: {
     preparing: 'جاري التحضير للتحميل...',
@@ -586,7 +587,8 @@ const CONTENT_TEXT = {
     dropToCancel: 'إلغاء',
     dragSubtext: 'فيديو • شورتس • قائمة تشغيل',
     frameCaptured: 'تم التقاط لقطة الشاشة',
-    screenshotTitle: 'لقطة شاشة يوتيوب'
+    screenshotTitle: 'لقطة شاشة يوتيوب',
+    frameCopied: 'تم النسخ'
   },
   fr: {
     preparing: 'Préparation du téléchargement...',
@@ -597,7 +599,35 @@ const CONTENT_TEXT = {
     dropToCancel: 'Annuler',
     dragSubtext: 'Vidéo • Shorts • Playlist',
     frameCaptured: 'Capture d\'écran effectuée',
-    screenshotTitle: 'Capture d\'écran YouTube'
+    screenshotTitle: 'Capture d\'écran YouTube',
+    frameCopied: 'Copié'
+  },
+  de: {
+    frameCopied: 'Kopiert'
+  },
+  es: {
+    frameCopied: 'Copiado'
+  },
+  ja: {
+    frameCopied: 'コピーしました'
+  },
+  zh: {
+    frameCopied: '已复制'
+  },
+  pt: {
+    frameCopied: 'Copiado'
+  },
+  ru: {
+    frameCopied: 'Скопировано'
+  },
+  ko: {
+    frameCopied: '복사됨'
+  },
+  tr: {
+    frameCopied: 'Kopyalandı'
+  },
+  hi: {
+    frameCopied: 'कॉपी किया गया'
   }
 };
 
@@ -621,13 +651,13 @@ function showToast(message, type = 'info') {
   const toast = document.createElement('div');
   toast.id = 'ytplus-toast';
 
-  
+
   const content = document.createElement('div');
   content.style.display = 'flex';
   content.style.alignItems = 'center';
   content.style.gap = '12px';
 
-  
+
   let icon = '';
   if (type === 'success') {
     icon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff0000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
@@ -635,13 +665,15 @@ function showToast(message, type = 'info') {
     icon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff5252" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>';
   } else if (type === 'screenshot') {
     icon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff0000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>';
+  } else if (type === 'none') {
+    icon = '';
   } else {
     icon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="spin"><path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg>';
   }
 
   toast.innerHTML = `<div style="display:flex; align-items:center; gap:12px;">${icon}<span>${message}</span></div>`;
 
-  
+
   toast.style.cssText = `
     position: fixed;
     bottom: 32px;
@@ -663,7 +695,7 @@ function showToast(message, type = 'info') {
     direction: ltr !important;
   `;
 
-  
+
   const styleSheet = document.createElement("style");
   styleSheet.textContent = `
     @keyframes ytplus-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
@@ -673,7 +705,7 @@ function showToast(message, type = 'info') {
 
   document.body.appendChild(toast);
 
-  
+
   toast.style.opacity = '0';
   toast.style.transform = 'translateX(-20px)';
 
@@ -698,11 +730,11 @@ async function togglePiP() {
   let video;
 
   if (isShorts) {
-    
+
     video = document.querySelector('ytd-reel-video-renderer[is-active] video') ||
       document.querySelector('ytd-reel-video-renderer[active] video');
 
-    
+
     if (!video) {
       const allVideos = Array.from(document.querySelectorAll('ytd-reel-video-renderer video, #shorts-container video, ytd-shorts video'));
       video = allVideos.find(v => {
@@ -711,13 +743,13 @@ async function togglePiP() {
       });
     }
   } else {
-    
+
     video = document.querySelector('video.html5-main-video') ||
       document.querySelector('#movie_player video') ||
       document.querySelector('video');
   }
 
-  
+
   if (!video) {
     video = Array.from(document.querySelectorAll('video')).find(v => !v.paused && v.offsetWidth > 0) ||
       document.querySelector('video');
@@ -763,7 +795,7 @@ async function captureScreenshot() {
   const ctx = canvas.getContext('2d');
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-  
+
   try {
     canvas.toBlob(blob => {
       if (blob && typeof ClipboardItem !== 'undefined') {
@@ -779,7 +811,7 @@ async function captureScreenshot() {
   const link = document.createElement('a');
   link.href = dataUrl;
 
-  
+
   let title = getLocalText('screenshotTitle');
   try {
     const meta = await metaPromise;
@@ -810,7 +842,7 @@ async function captureScreenshot() {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
-  
+
   showScreenshotFeedback();
 }
 
@@ -827,6 +859,49 @@ function showScreenshotFeedback() {
   }
 
   showToast(getLocalText('frameCaptured'), 'screenshot');
+}
+
+async function copyFrameToClipboard() {
+  const isShorts = window.location.pathname.startsWith('/shorts/');
+  let video;
+  if (isShorts) {
+    video = document.querySelector('ytd-reel-video-renderer[is-active] video') ||
+      document.querySelector('ytd-shorts video') ||
+      document.querySelector('#shorts-container video');
+  } else {
+    video = document.querySelector('video.html5-main-video') ||
+      document.querySelector('#movie_player video') ||
+      document.querySelector('video');
+  }
+
+  if (!video || video.videoWidth === 0) return;
+
+  const canvas = document.createElement('canvas');
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+  try {
+    canvas.toBlob(blob => {
+      if (blob && typeof ClipboardItem !== 'undefined') {
+        const item = new ClipboardItem({ 'image/png': blob });
+        navigator.clipboard.write([item])
+          .then(() => {
+            showCopiedFeedback();
+          })
+          .catch((err) => {
+            console.warn('[Tubeless] Clipboard copy failed:', err);
+          });
+      }
+    });
+  } catch (err) {
+    console.warn('[Tubeless] Clipboard copy failed:', err);
+  }
+}
+
+function showCopiedFeedback() {
+  showToast(getLocalText('frameCopied'), 'none');
 }
 
 // Listen for screenshot events from MAIN world (YoutubePiP.js)
@@ -850,6 +925,22 @@ async function handleHotkeys(e) {
   };
 
   if (isTextInput(activeEl)) return;
+
+  // Handle Ctrl + C (or Cmd + C) for copying video frame
+  const isCtrlC = (e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'c';
+  if (isCtrlC) {
+    const selectedText = window.getSelection().toString().trim();
+    if (selectedText.length === 0) {
+      const isWatch = window.location.pathname.includes('/watch');
+      const isShorts = window.location.pathname.startsWith('/shorts/');
+      if (isWatch || (isShorts && !settingsState.hideShorts)) {
+        e.preventDefault();
+        e.stopPropagation();
+        await copyFrameToClipboard();
+      }
+      return;
+    }
+  }
 
   const downloadHotkey = (settingsState.downloadHotkey || 'd').toLowerCase();
   const optionsHotkey = (settingsState.optionsHotkey || 'o').toLowerCase();
