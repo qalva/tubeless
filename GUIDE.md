@@ -126,6 +126,7 @@ Tubeless features single-key hotkeys (active when not typing in a text box):
 ### Theme & Language
 *   **Dark Mode**: Switch between dark and light themes using the moon/sun icon.
 *   **Localization**: Tubeless supports 11+ languages. Change it in the **General** settings.
+*   **Checking for Updates**: Functional checking for updates in the extension options.
 
 ### Quick Access
 *   The sidebar in the settings page automatically tracks which settings you use most and pins them to the "Quick Access" row.
