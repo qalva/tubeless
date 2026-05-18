@@ -121,6 +121,7 @@ Tubeless propose des raccourcis à touche unique (actifs lorsque vous ne tapez p
 ### Thème et Langue
 *   **Mode Sombre** : Basculez entre les thèmes clair et sombre à l'aide de l'icône lune/soleil.
 *   **Langue** : Tubeless supporte plus de 11 langues. Modifiez-la dans les paramètres **Général**.
+*   **Mise à jour** : Vérification fonctionnelle des mises à jour dans les options de l'extension.
 
 ### Accès Rapide
 *   La barre latérale de la page des paramètres suit automatiquement les réglages que vous utilisez le plus et les épingle dans la ligne "Accès Rapide".
