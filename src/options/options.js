@@ -148,7 +148,10 @@ const UI_TEXT = {
     resetDefaultsHint: 'Restore all default settings',
     quickAccess: 'Quick Access',
     upToDate: 'Up To Date',
-    downloadAppHint: 'Download Tubeless for PC to enable downloads'
+    downloadAppHint: 'Download Tubeless for PC to enable downloads',
+    checkingUpdates: 'Checking...',
+    updateAvailable: 'Update Available',
+    updateCheckFailed: 'Check Failed'
   },
   ar: {
     
@@ -241,7 +244,10 @@ const UI_TEXT = {
     resetDefaultsHint: 'استعادة جميع الإعدادات الافتراضية',
     quickAccess: 'الوصول السريع',
     upToDate: 'مُحدّث',
-    downloadAppHint: 'حمّل Tubeless للكمبيوتر لتفعيل التحميل'
+    downloadAppHint: 'حمّل Tubeless للكمبيوتر لتفعيل التحميل',
+    checkingUpdates: 'جاري التحقق...',
+    updateAvailable: 'يتوفر تحديث',
+    updateCheckFailed: 'فشل التحقق'
   },
   fr: {
     
@@ -356,7 +362,10 @@ const UI_TEXT = {
     resetDefaultsHint: 'Restaurer tous les paramètres',
     quickAccess: 'Accès Rapide',
     upToDate: 'À jour',
-    downloadAppHint: 'Téléchargez Tubeless pour PC pour activer les téléchargements'
+    downloadAppHint: 'Téléchargez Tubeless pour PC pour activer les téléchargements',
+    checkingUpdates: 'Vérification...',
+    updateAvailable: 'Mise à jour dispo',
+    updateCheckFailed: 'Échec de vérif.'
   },
   de: {
     navGeneral: 'Allgemein',
@@ -448,7 +457,10 @@ const UI_TEXT = {
     resetDefaultsHint: 'Alle Standardeinstellungen wiederherstellen',
     quickAccess: 'Schnellzugriff',
     upToDate: 'Aktuell',
-    downloadAppHint: 'Laden Sie Tubeless für PC herunter, um Downloads zu aktivieren'
+    downloadAppHint: 'Laden Sie Tubeless für PC herunter, um Downloads zu aktivieren',
+    checkingUpdates: 'Prüfen...',
+    updateAvailable: 'Update verfügbar',
+    updateCheckFailed: 'Fehlgeschlagen'
   },
   es: {
     navGeneral: 'General',
@@ -532,7 +544,10 @@ const UI_TEXT = {
     thumbnails: 'Miniatura',
     quickAccess: 'Acceso Rápido',
     upToDate: 'Al día',
-    downloadAppHint: 'Descarga Tubeless para PC para activar las descargas'
+    downloadAppHint: 'Descarga Tubeless para PC para activar las descargas',
+    checkingUpdates: 'Buscando...',
+    updateAvailable: 'Actualización disponible',
+    updateCheckFailed: 'Error al buscar'
   },
   ja: {
     navGeneral: '一般',
@@ -624,7 +639,10 @@ const UI_TEXT = {
     resetDefaultsHint: 'すべての設定をデフォルトに戻す',
     quickAccess: 'クイックアクセス',
     upToDate: '最新の状態',
-    downloadAppHint: 'PC版Tubelessをダウンロードしてダウンロードを有効にする'
+    downloadAppHint: 'PC版Tubelessをダウンロードしてダウンロードを有効にする',
+    checkingUpdates: '確認中...',
+    updateAvailable: '新バージョンあり',
+    updateCheckFailed: '確認失敗'
   },
   zh: {
     navGeneral: '常规',
@@ -716,7 +734,10 @@ const UI_TEXT = {
     resetDefaultsHint: '恢复所有默认设置',
     quickAccess: '快速访问',
     upToDate: '已是最新',
-    downloadAppHint: '下载 PC 版 Tubeless 以启用下载'
+    downloadAppHint: '下载 PC 版 Tubeless 以启用下载',
+    checkingUpdates: '正在检查...',
+    updateAvailable: '新版本可用',
+    updateCheckFailed: '检查失败'
   },
   pt: {
     navGeneral: 'Geral',
@@ -800,7 +821,10 @@ const UI_TEXT = {
     thumbnails: 'Miniatura',
     quickAccess: 'Acesso Rápido',
     upToDate: 'Atualizado',
-    downloadAppHint: 'Baixe o Tubeless para PC para ativar downloads'
+    downloadAppHint: 'Baixe o Tubeless para PC para ativar downloads',
+    checkingUpdates: 'Verificando...',
+    updateAvailable: 'Atualização disponível',
+    updateCheckFailed: 'Falha na verificação'
   },
   ru: {
     navGeneral: 'Общие',
@@ -892,7 +916,10 @@ const UI_TEXT = {
     resetDefaultsHint: 'Восстановить все настройки по умолчанию',
     quickAccess: 'Быстрый доступ',
     upToDate: 'Актуально',
-    downloadAppHint: 'Скачайте Tubeless для ПК, чтобы включить загрузки'
+    downloadAppHint: 'Скачайте Tubeless для ПК, чтобы включить загрузки',
+    checkingUpdates: 'Проверка...',
+    updateAvailable: 'Доступно обновление',
+    updateCheckFailed: 'Ошибка проверки'
   },
   ko: {
     navGeneral: '일반',
@@ -984,7 +1011,10 @@ const UI_TEXT = {
     resetDefaultsHint: '모든 기본 설정 복원',
     quickAccess: '빠른 액세스',
     upToDate: '최신 상태',
-    downloadAppHint: '다운로드를 활성화하려면 PC용 Tubeless를 다운로드하세요'
+    downloadAppHint: '다운로드를 활성화하려면 PC용 Tubeless를 다운로드하세요',
+    checkingUpdates: '확인 중...',
+    updateAvailable: '업데이트 가능',
+    updateCheckFailed: '확인 실패'
   },
   tr: {
     navGeneral: 'Genel',
@@ -1076,7 +1106,10 @@ const UI_TEXT = {
     resetDefaultsHint: 'Tüm varsayılan ayarları geri yükle',
     quickAccess: 'Hızlı Erişim',
     upToDate: 'Güncel',
-    downloadAppHint: 'İndirmeleri etkinleştirmek için PC için Tubeless\'ı indirin'
+    downloadAppHint: 'İndirmeleri etkinleştirmek için PC için Tubeless\'ı indirin',
+    checkingUpdates: 'Denetleniyor...',
+    updateAvailable: 'Güncelleme var',
+    updateCheckFailed: 'Başarısız'
   },
   hi: {
     navGeneral: 'सामान्य',
@@ -1160,7 +1193,10 @@ const UI_TEXT = {
     thumbnails: 'थंबनेल',
     quickAccess: 'त्वरित पहुंच',
     upToDate: 'अप टू डेट',
-    downloadAppHint: 'डाउनलोड सक्षम करने के लिए पीसी के लिए Tubeless डाउनलोड करें'
+    downloadAppHint: 'डाउनलोड सक्षम करने के लिए पीसी के लिए Tubeless डाउनलोड करें',
+    checkingUpdates: 'जांच की जा रही है...',
+    updateAvailable: 'अपडेट उपलब्ध है',
+    updateCheckFailed: 'जांच विफल रही'
   }
 };
 
@@ -1218,7 +1254,120 @@ function setStatus(key) {
   if (!status) return;
   status.textContent = t(key);
   if (key === 'saved' || key === 'exportReady' || key === 'importDone' || key === 'resetDone') {
-    setTimeout(() => { status.textContent = t('upToDate'); }, 2000);
+    setTimeout(() => {
+      const badge = getEl('update-badge');
+      if (badge && badge.classList.contains('update-available')) {
+        status.setAttribute('data-t', 'updateAvailable');
+        status.textContent = t('updateAvailable');
+      } else {
+        status.setAttribute('data-t', 'upToDate');
+        status.textContent = t('upToDate');
+        const statusIcon = getEl('status-icon');
+        if (statusIcon && !badge?.classList.contains('checking')) {
+          statusIcon.innerHTML = `<polyline points="20 6 9 17 4 12"></polyline>`;
+        }
+      }
+    }, 2000);
+  }
+}
+
+function compareVersions(v1, v2) {
+  const parts1 = v1.replace(/^v/, '').split('.').map(Number);
+  const parts2 = v2.replace(/^v/, '').split('.').map(Number);
+  for (let i = 0; i < Math.max(parts1.length, parts2.length); i++) {
+    const p1 = parts1[i] || 0;
+    const p2 = parts2[i] || 0;
+    if (p1 > p2) return 1;
+    if (p1 < p2) return -1;
+  }
+  return 0;
+}
+
+async function checkForUpdates(manual = false) {
+  const badge = getEl('update-badge');
+  const statusText = getEl('status');
+  const statusIcon = getEl('status-icon');
+  if (!badge || !statusText || !statusIcon) return;
+
+  if (badge.classList.contains('checking')) return;
+
+  badge.classList.remove('update-available', 'error', 'up-to-date');
+  badge.classList.add('checking');
+  statusText.setAttribute('data-t', 'checkingUpdates');
+  statusText.textContent = t('checkingUpdates');
+  badge.title = t('checkingUpdates');
+
+  statusIcon.innerHTML = `
+    <svg class="spinner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-dasharray="32" stroke-dashoffset="8"></circle>
+    </svg>
+  `;
+
+  try {
+    const currentVersion = chrome.runtime.getManifest().version;
+    
+    // Smooth transition: guarantee checking state lasts at least 800ms to prevent flickering
+    const fetchPromise = fetch('https://api.github.com/repos/qalva/tubeless/releases/latest');
+    const delayPromise = new Promise(resolve => setTimeout(resolve, 800));
+    
+    const [response] = await Promise.all([fetchPromise, delayPromise]);
+    if (!response.ok) throw new Error('GitHub API error');
+    
+    const data = await response.json();
+    const latestVersion = data.tag_name ? data.tag_name.replace(/^v/, '') : null;
+
+    badge.classList.remove('checking');
+
+    if (latestVersion && compareVersions(latestVersion, currentVersion) > 0) {
+      badge.classList.add('update-available');
+      statusText.setAttribute('data-t', 'updateAvailable');
+      statusText.textContent = t('updateAvailable');
+      badge.title = `${t('updateAvailable')}: v${latestVersion} (Click to download)`;
+      
+      statusIcon.innerHTML = `
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <polyline points="19 12 12 19 5 12"></polyline>
+        </svg>
+      `;
+      badge.dataset.url = data.html_url || 'https://github.com/qalva/tubeless/releases';
+    } else {
+      badge.classList.add('up-to-date');
+      statusText.setAttribute('data-t', 'upToDate');
+      statusText.textContent = t('upToDate');
+      badge.title = t('upToDate') + ' (Click to re-check)';
+      
+      statusIcon.innerHTML = `
+        <polyline points="20 6 9 17 4 12"></polyline>
+      `;
+    }
+  } catch (err) {
+    console.error('[Tubeless] Update check failed:', err);
+    badge.classList.remove('checking');
+    badge.classList.add('error');
+    statusText.setAttribute('data-t', 'updateCheckFailed');
+    statusText.textContent = t('updateCheckFailed');
+    badge.title = t('updateCheckFailed') + ' (Click to retry)';
+    
+    statusIcon.innerHTML = `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="8" x2="12" y2="12"></line>
+        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+      </svg>
+    `;
+    
+    setTimeout(() => {
+      if (!badge.classList.contains('update-available') && !badge.classList.contains('checking')) {
+        badge.classList.remove('error');
+        statusText.setAttribute('data-t', 'upToDate');
+        statusText.textContent = t('upToDate');
+        statusIcon.innerHTML = `
+          <polyline points="20 6 9 17 4 12"></polyline>
+        `;
+        badge.title = t('upToDate') + ' (Click to check)';
+      }
+    }, 4000);
   }
 }
 
@@ -1232,6 +1381,12 @@ async function loadSettings() {
     }
 
     localize(values.language);
+
+    const currentVersion = chrome.runtime.getManifest().version;
+    const versionDisplay = getEl('version-display');
+    if (versionDisplay) {
+      versionDisplay.textContent = `(v${currentVersion})`;
+    }
 
     for (const key of settingKeys) {
       if (key === 'darkMode') {
@@ -1701,6 +1856,22 @@ document.addEventListener('DOMContentLoaded', async () => {
   const resetSettingsBtn = getEl('resetSettingsBtn');
   if (resetSettingsBtn) {
     resetSettingsBtn.addEventListener('click', resetDefaults);
+  }
+
+  const updateBadge = getEl('update-badge');
+  if (updateBadge) {
+    updateBadge.addEventListener('click', () => {
+      if (updateBadge.classList.contains('update-available') && updateBadge.dataset.url) {
+        window.open(updateBadge.dataset.url, '_blank');
+      } else {
+        checkForUpdates(true);
+      }
+    });
+
+    // Run automatic check on load with a slight delay
+    setTimeout(() => {
+      checkForUpdates(false);
+    }, 1500);
   }
 
   
