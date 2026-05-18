@@ -48,6 +48,7 @@ The extension transforms YouTube into a focused workspace. Features advanced ad-
 8. [Disclaimer](#disclaimer)
 9. [Architecture](#architecture)
 10. [Changelog](#changelog)
+    - [[4.0.2] - 2026-05-18](#402---2026-05-18)
     - [[4.0.1] - 2026-05-17](#401---2026-05-17)
     - [[4.0.0] - 2026-05-15](#400---2026-05-15)
     - [[3.0.1] - 2026-05-15](#301---2026-05-15)
@@ -256,7 +257,7 @@ Event-driven, modular, performance-first design.
 ### [4.0.2] - 2026-05-18
 
 ### Added
-- Functional checking for updates in extension options
+- Functional checking for updates in extension options.
 
 ### [4.0.1] - 2026-05-17
 
