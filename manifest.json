@@ -21,7 +21,8 @@
     "https://returnyoutubedislikeapi.com/*",
     "http://localhost:8791/*",
     "https://get.adblock-for-youtube.com/*",
-    "https://api.adblock-for-youtube.com/*"
+    "https://api.adblock-for-youtube.com/*",
+    "https://api.github.com/*"
   ],
   "background": {
     "service_worker": "src/background/background.js"
