@@ -1629,7 +1629,7 @@ const ytPlusDownload = {
           e.stopPropagation();
           this.playlistMode = !this.playlistMode;
           toggleBtn.classList.toggle('active', this.playlistMode);
-          chrome.storage.local.set({ playlistMode: this.playlistMode });
+          chrome.storage.local.set({ playlistDownloadEnabled: this.playlistMode });
 
           if (this.playlistMode) {
             this.openQualityMenu();
@@ -1647,8 +1647,8 @@ const ytPlusDownload = {
     if (!toggleBtn) return;
 
     toggleBtn.style.display = (forceShow || this.playlistId) ? 'flex' : 'none';
-    const stored = await chrome.storage.local.get(['playlistMode']);
-    this.playlistMode = !!stored.playlistMode;
+    const stored = await chrome.storage.local.get(['playlistDownloadEnabled']);
+    this.playlistMode = !!stored.playlistDownloadEnabled;
     toggleBtn.classList.toggle('active', this.playlistMode);
   },
 
@@ -1966,7 +1966,14 @@ chrome.storage.onChanged.addListener((changes, area) => {
     for (const [key, change] of Object.entries(changes)) {
       const val = change.newValue;
 
-      
+      if (key === 'playlistDownloadEnabled') {
+        const toggleBtn = getEl('playlistToggleBtn');
+        if (toggleBtn) {
+          ytPlusDownload.playlistMode = Boolean(val);
+          toggleBtn.classList.toggle('active', Boolean(val));
+        }
+      }
+
       const el = getEl(key);
       if (el && el.type === 'checkbox') {
         el.checked = Boolean(val);
