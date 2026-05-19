@@ -571,7 +571,7 @@ const CONTENT_TEXT = {
     downloading: 'Downloading {quality}...',
     serverError: 'Server Error',
     notAvailable: 'Download not available',
-    dropToDownload: 'Drop to Download',
+    dropToDownload: 'Download',
     dropToCancel: 'Cancel',
     dragSubtext: 'Video • Shorts • Playlist',
     frameCaptured: 'Screenshot captured',
@@ -583,7 +583,7 @@ const CONTENT_TEXT = {
     downloading: 'جاري تحميل {quality}...',
     serverError: 'خطأ في الخادم',
     notAvailable: 'التحميل غير متاح',
-    dropToDownload: 'إسقاط للتحميل',
+    dropToDownload: 'تنزيل',
     dropToCancel: 'إلغاء',
     dragSubtext: 'فيديو • شورتس • قائمة تشغيل',
     frameCaptured: 'تم التقاط لقطة الشاشة',
@@ -595,7 +595,7 @@ const CONTENT_TEXT = {
     downloading: 'Téléchargement {quality}...',
     serverError: 'Erreur du Serveur',
     notAvailable: 'Téléchargement non disponible',
-    dropToDownload: 'Déposer pour télécharger',
+    dropToDownload: 'Télécharger',
     dropToCancel: 'Annuler',
     dragSubtext: 'Vidéo • Shorts • Playlist',
     frameCaptured: 'Capture d\'écran effectuée',
@@ -603,30 +603,111 @@ const CONTENT_TEXT = {
     frameCopied: 'Copié'
   },
   de: {
+    preparing: 'Download wird vorbereitet...',
+    downloading: 'Lade {quality} herunter...',
+    serverError: 'Serverfehler',
+    notAvailable: 'Download nicht verfügbar',
+    dropToDownload: 'Herunterladen',
+    dropToCancel: 'Abbrechen',
+    dragSubtext: 'Video • Shorts • Playlist',
+    frameCaptured: 'Screenshot aufgenommen',
+    screenshotTitle: 'YouTube-Screenshot',
     frameCopied: 'Kopiert'
   },
   es: {
+    preparing: 'Preparando descarga...',
+    downloading: 'Descargando {quality}...',
+    serverError: 'Error del servidor',
+    notAvailable: 'Descarga no disponible',
+    dropToDownload: 'Descargar',
+    dropToCancel: 'Cancelar',
+    dragSubtext: 'Video • Shorts • Lista de reproducción',
+    frameCaptured: 'Captura de pantalla realizada',
+    screenshotTitle: 'Captura de pantalla de YouTube',
     frameCopied: 'Copiado'
   },
   ja: {
+    preparing: 'ダウンロードを準備中...',
+    downloading: '{quality}をダウンロード中...',
+    serverError: 'サーバーエラー',
+    notAvailable: 'ダウンロード不可',
+    dropToDownload: 'ダウンロード',
+    dropToCancel: 'キャンセル',
+    dragSubtext: '動画 • ショート • プレイリスト',
+    frameCaptured: 'スクリーンショットを保存しました',
+    screenshotTitle: 'YouTubeスクリーンショット',
     frameCopied: 'コピーしました'
   },
   zh: {
+    preparing: '正在准备下载...',
+    downloading: '正在下载 {quality}...',
+    serverError: '服务器错误',
+    notAvailable: '不可下载',
+    dropToDownload: '下载',
+    dropToCancel: '取消',
+    dragSubtext: '视频 • Shorts • 播放列表',
+    frameCaptured: '已截屏',
+    screenshotTitle: 'YouTube 截图',
     frameCopied: '已复制'
   },
   pt: {
+    preparing: 'Preparando download...',
+    downloading: 'Baixando {quality}...',
+    serverError: 'Erro no servidor',
+    notAvailable: 'Download indisponível',
+    dropToDownload: 'Baixar',
+    dropToCancel: 'Cancelar',
+    dragSubtext: 'Vídeo • Shorts • Playlist',
+    frameCaptured: 'Captura de tela realizada',
+    screenshotTitle: 'Captura de tela do YouTube',
     frameCopied: 'Copiado'
   },
   ru: {
+    preparing: 'Подготовка к загрузке...',
+    downloading: 'Загрузка {quality}...',
+    serverError: 'Ошибка сервера',
+    notAvailable: 'Загрузка недоступна',
+    dropToDownload: 'Скачать',
+    dropToCancel: 'Отмена',
+    dragSubtext: 'Видео • Shorts • Плейлист',
+    frameCaptured: 'Скриншот сохранен',
+    screenshotTitle: 'Скриншот YouTube',
     frameCopied: 'Скопировано'
   },
   ko: {
+    preparing: '다운로드 준비 중...',
+    downloading: '{quality} 다운로드 중...',
+    serverError: '서버 오류',
+    notAvailable: '다운로드할 수 없음',
+    dropToDownload: '다운로드',
+    dropToCancel: '취소',
+    dragSubtext: '동영상 • Shorts • 재생목록',
+    frameCaptured: '스크린샷이 캡처됨',
+    screenshotTitle: 'YouTube 스크린샷',
     frameCopied: '복사됨'
   },
   tr: {
+    preparing: 'İndirme hazırlanıyor...',
+    downloading: '{quality} indiriliyor...',
+    serverError: 'Sunucu Hatası',
+    notAvailable: 'İndirme mevcut değil',
+    dropToDownload: 'İndir',
+    dropToCancel: 'İptal',
+    dragSubtext: 'Video • Shorts • Oynatma Listesi',
+    frameCaptured: 'Ekran görüntüsü alındı',
+    screenshotTitle: 'YouTube Ekran Görüntüsü',
     frameCopied: 'Kopyalandı'
   },
   hi: {
+    preparing: 'डाउनलोड की तैयारी हो रही है...',
+    downloading: '{quality} डाउनलोड हो रहा है...',
+    serverError: 'सर्वर त्रुटि',
+    notAvailable: 'डाउनलोड उपलब्ध नहीं है',
+    dropToDownload: 'डाउनलोड',
+    dropToCancel: 'रद्द करें',
+    dragSubtext: 'वीडियो • शॉर्ट्स • प्लेलिस्ट',
+    frameCaptured: 'स्क्रीनशॉट लिया गया',
+    screenshotTitle: 'YouTube स्क्रीनशॉट',
     frameCopied: 'कॉपी किया गया'
   }
 };
@@ -987,7 +1068,13 @@ async function handleHotkeys(e) {
     e.preventDefault();
     e.stopPropagation();
 
-    initiateDownload(videoId);
+    const urlParams = new URLSearchParams(window.location.search);
+    const listId = urlParams.get('list');
+    if (settingsState.playlistDownloadEnabled && listId) {
+      initiateDownload(listId, 'playlist');
+    } else {
+      initiateDownload(videoId);
+    }
   }
 }
 
@@ -1000,6 +1087,8 @@ async function initiateDownload(videoId, type = null) {
 
   // Ensure settings are loaded before proceeding
   if (!settingsLoaded) await settingsLoadPromise;
+
+  const isPlaylist = (type === 'playlist');
 
   // Determine intended download type. 
   // If no specific type is requested (e.g. from hotkey), or if it's a generic 'video' drop,
@@ -1015,7 +1104,7 @@ async function initiateDownload(videoId, type = null) {
 
   // Only attempt to fetch metadata from player if it's the current video
   const currentId = getVideoId();
-  if (!metadata && videoId === currentId) {
+  if (!isPlaylist && downloadType !== 'playlist' && !metadata && videoId === currentId) {
     if (window.location.pathname.includes('/watch') || window.location.pathname.includes('/shorts/')) {
       showToast(getLocalText('preparing'));
       try {
@@ -1030,7 +1119,22 @@ async function initiateDownload(videoId, type = null) {
     let qualityValue = 'best';
     let displayLabel = 'Best';
 
-    if (downloadType === 'audio') {
+    if (isPlaylist || downloadType === 'playlist') {
+      const targetQuality = settingsState.defaultDownloadQuality || 'best';
+      if (targetQuality === 'audio') {
+        downloadType = 'audio';
+        qualityValue = 'best';
+        displayLabel = 'Playlist (Audio)';
+      } else if (targetQuality === 'thumbnail') {
+        downloadType = 'thumbnail';
+        qualityValue = 'best';
+        displayLabel = 'Playlist (Images)';
+      } else {
+        downloadType = 'playlist';
+        qualityValue = targetQuality === 'best' ? 'best' : targetQuality;
+        displayLabel = qualityValue === 'best' ? 'Playlist (Best)' : `Playlist (${qualityValue}p)`;
+      }
+    } else if (downloadType === 'audio') {
       qualityValue = 'best';
       displayLabel = 'Audio';
     } else if (downloadType === 'thumbnail') {
@@ -1067,10 +1171,15 @@ async function initiateDownload(videoId, type = null) {
     }
 
     const request = {
-      v: videoId,
       quality: qualityValue,
       type: downloadType
     };
+
+    if (isPlaylist) {
+      request.list = videoId;
+    } else {
+      request.v = videoId;
+    }
 
     if (chrome.runtime?.id) {
       chrome.runtime.sendMessage({ action: 'YTPLUS_START_DOWNLOAD', payload: request }, response => {
