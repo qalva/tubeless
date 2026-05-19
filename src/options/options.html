@@ -84,16 +84,33 @@
           </a>
         </div>
         <div class="nav-item">
-          <a href="#media" class="nav-link" data-section="media">
+          <a href="#downloads" class="nav-link" data-section="downloads">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
               <polyline points="7 10 12 15 17 10" />
               <line x1="12" y1="15" x2="12" y2="3" />
             </svg>
-            <span data-t="navMedia">Media</span>
+            <span data-t="navDownloads">Downloads</span>
           </a>
         </div>
+        <div class="nav-item">
+          <a href="#media" class="nav-link" data-section="media">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2" ry="2" />
+              <line x1="6" y1="8" x2="6.01" y2="8" />
+              <line x1="10" y1="8" x2="10.01" y2="8" />
+              <line x1="14" y1="8" x2="14.01" y2="8" />
+              <line x1="18" y1="8" x2="18.01" y2="8" />
+              <line x1="6" y1="12" x2="6.01" y2="12" />
+              <line x1="18" y1="12" x2="18.01" y2="12" />
+              <line x1="7" y1="16" x2="17" y2="16" />
+            </svg>
+            <span data-t="navMedia">Shortcuts</span>
+          </a>
+        </div>
+
         <div class="nav-item">
           <a href="#advanced" class="nav-link" data-section="advanced">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -133,7 +150,7 @@
               <line x1="12" y1="8" x2="12" y2="12" />
               <line x1="12" y1="16" x2="12.01" y2="16" />
             </svg>
-            <a href="https://www.mediafire.com/file/vi8tolbhgvq2974/TubelessSetup-1.0.1.exe/file" target="_blank"
+            <a href="https://www.mediafire.com/file/lcsdm3je7it9o9e/TubelessSetup-1.0.3.exe/file" target="_blank"
               class="footer-link" data-t-title="downloadAppHint" title="Download Tubeless for PC to enable downloads">
               <svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
@@ -640,12 +657,11 @@
 
 
 
-        <section id="media" class="settings-section">
+        <section id="downloads" class="settings-section">
           <h2 class="section-title">
-            <span data-t="sectionMedia">Media & Shortcuts</span>
+            <span data-t="sectionDownloads">Downloads</span>
           </h2>
           <div class="section-card">
-
             <div class="setting-group">
               <div class="setting">
                 <div class="setting-info">
@@ -664,7 +680,6 @@
               <div id="hotkeyStatus" class="hotkey-status"></div>
 
               <div class="sub-settings">
-
                 <div class="setting sub-setting">
                   <div class="setting-info">
                     <span class="icon">
@@ -692,7 +707,6 @@
                   </select>
                 </div>
 
-
                 <label class="setting sub-setting">
                   <div class="setting-info">
                     <span class="icon">
@@ -718,8 +732,14 @@
                 </label>
               </div>
             </div>
+          </div>
+        </section>
 
-
+        <section id="media" class="settings-section">
+          <h2 class="section-title">
+            <span data-t="sectionMedia">Shortcuts & Capture</span>
+          </h2>
+          <div class="section-card">
             <div class="setting">
               <div class="setting-info">
                 <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -737,7 +757,6 @@
             </div>
             <div id="optionsHotkeyStatus" class="hotkey-status"></div>
 
-
             <div class="setting">
               <div class="setting-info">
                 <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -754,7 +773,6 @@
               </div>
             </div>
             <div id="pipHotkeyStatus" class="hotkey-status"></div>
-
 
             <div class="setting-group">
               <div class="setting">
