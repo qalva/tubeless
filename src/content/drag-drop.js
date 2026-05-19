@@ -5,7 +5,7 @@
   
   const UnifiedUrlProcessor = {
     
-    process(input) {
+    process(input, playlistDownloadEnabled = true) {
       if (!input) return null;
       input = input.trim();
 
@@ -14,30 +14,29 @@
         const host = url.hostname.replace('www.', '');
 
         if (host === 'youtube.com' || host === 'm.youtube.com') {
-          
           const v = url.searchParams.get('v');
+          const list = url.searchParams.get('list');
+
+          // If a video ID is present, always download the video directly (even if it belongs to a playlist)
           if (v) return { type: 'video', id: v };
 
-          
+          // If there is no video ID but a playlist ID is present, download the playlist
+          if (playlistDownloadEnabled && list) {
+            return { type: 'playlist', id: list };
+          }
+
           const shortsMatch = url.pathname.match(/^\/shorts\/([^/?#]+)/);
           if (shortsMatch) return { type: 'video', id: shortsMatch[1] };
 
-          
           const embedMatch = url.pathname.match(/^\/embed\/([^/?#]+)/);
           if (embedMatch) return { type: 'video', id: embedMatch[1] };
 
-          
-          const list = url.searchParams.get('list');
-          if (list) return { type: 'playlist', id: list };
-
         } else if (host === 'youtu.be') {
-          
           const id = url.pathname.slice(1).split(/[?#]/)[0];
           if (id) return { type: 'video', id: id };
         }
       } catch (e) {
-        
-        
+        // Fallback for raw text video ID extraction
         const videoIdMatch = input.match(/(?:v=|shorts\/|embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
         if (videoIdMatch) return { type: 'video', id: videoIdMatch[1] };
       }
@@ -51,6 +50,7 @@
     constructor() {
       this.overlay = null;
       this.dragCounter = 0;
+      this.playlistDownloadEnabled = true;
       this.init();
     }
 
@@ -62,7 +62,20 @@
       document.addEventListener('drop', this.handleDrop.bind(this), true);
       
       
-      window.addEventListener('YTPLUS_SETTINGS_UPDATED', this.updateTranslations.bind(this));
+      window.addEventListener('YTPLUS_SETTINGS_UPDATED', (e) => {
+        if (e.detail && typeof e.detail.playlistDownloadEnabled !== 'undefined') {
+          this.playlistDownloadEnabled = e.detail.playlistDownloadEnabled;
+        }
+        this.updateTranslations();
+      });
+
+      if (chrome.storage?.local) {
+        chrome.storage.local.get('playlistDownloadEnabled', (res) => {
+          if (typeof res.playlistDownloadEnabled !== 'undefined') {
+            this.playlistDownloadEnabled = res.playlistDownloadEnabled;
+          }
+        });
+      }
       
       this.injectStyles();
     }
@@ -72,11 +85,9 @@
       const t = (key) => (typeof window.YTPlusGetLocalText === 'function' ? window.YTPlusGetLocalText(key) : key);
       
       const downloadText = this.overlay.querySelector('#ytplus-download-zone .ytplus-drag-text');
-      const downloadSub = this.overlay.querySelector('#ytplus-download-zone .ytplus-drag-subtext');
       const cancelText = this.overlay.querySelector('#ytplus-cancel-zone .ytplus-drag-text');
       
       if (downloadText) downloadText.textContent = t('dropToDownload');
-      if (downloadSub) downloadSub.textContent = t('dragSubtext');
       if (cancelText) cancelText.textContent = t('dropToCancel');
     }
 
@@ -232,7 +243,6 @@
         <div class="ytplus-drag-content">
           <div class="ytplus-drag-zone download-zone" id="ytplus-download-zone">
             <div class="ytplus-drag-text">${t('dropToDownload')}</div>
-            <div class="ytplus-drag-subtext">${t('dragSubtext')}</div>
           </div>
           <div class="ytplus-drag-zone cancel-zone" id="ytplus-cancel-zone">
             <div class="ytplus-drag-text">${t('dropToCancel')}</div>
@@ -295,7 +305,7 @@
       const data = this.getTransferData(e);
       if (!data) return;
 
-      const result = UnifiedUrlProcessor.process(data);
+      const result = UnifiedUrlProcessor.process(data, this.playlistDownloadEnabled);
       if (result) {
         e.preventDefault();
         e.stopPropagation();
