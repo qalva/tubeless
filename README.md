@@ -258,10 +258,8 @@ Event-driven, modular, performance-first design.
 ### [4.0.3] - 2026-05-19
 
 ### Added
-- Dedicated Downloads Options Panel: Separated download-specific options into a clean, dedicated "Downloads" settings panel section, complete with native multi-language translation support.
 - General Preferences Synchronization: Enabled unified control over download quality and playlist mode across all download mechanisms (download hotkey, floating drop-to-download buttons, toolbar popup). Toggling Playlist Mode in the popup or options page now synchronizes settings immediately in real-time.
 - Smart Watch URLs Drag-and-Drop: Simplified drag-and-drop targets to streamlined "Download" actions.
-- Native Background Shell Notifications: Advanced toast activation handlers using raw absolute path parameters on Windows. Clicking completed download notifications (new, past, or playlists) now successfully launches files in your default player and folders in Windows Explorer, bypassing URL-encoding issues with brackets `[` and `]`.
 
 ### [4.0.2] - 2026-05-18
 
