@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  Block ads, restore dislikes, and download media via <a href="https://www.mediafire.com/file/lcsdm3je7it9o9e/TubelessSetup-1.0.3.exe/file" target="_blank">Tubeless Desktop</a>.
+  Focus, block ads, restore dislikes, download any YouTube media and more.
 </p>
 
 <p align="center">
