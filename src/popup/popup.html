@@ -8,6 +8,7 @@
     <link rel="icon" href="../../assets/icon.png" />
     <link rel="stylesheet" href="popup.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="popup.js" defer></script>
 </head>
 
 <body class="modern loading">
@@ -21,14 +22,6 @@
                 </div>
             </div>
             <div class="header-actions">
-                <button id="deepWorkBtn" class="icon-btn" data-t-title="deepWorkHint">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10" />
-                        <circle cx="12" cy="12" r="6" />
-                        <circle cx="12" cy="12" r="2" />
-                    </svg>
-                </button>
                 <div class="download-container">
                     <div id="qualityDropdown" class="dropdown quality-dropdown">
                         <div id="qualityMenuBtn" class="quality-btn" disabled>
@@ -80,6 +73,14 @@
                         </svg>
                     </button>
                 </div>
+                <button id="deepWorkBtn" class="icon-btn" data-t-title="deepWorkHint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10" />
+                        <circle cx="12" cy="12" r="6" />
+                        <circle cx="12" cy="12" r="2" />
+                    </svg>
+                </button>
                 <div class="dropdown">
                     <button id="moreMenuBtn" class="icon-btn" data-t-title="moreHint">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -412,7 +413,6 @@
 
     </main>
     <div id="menuBackdrop" class="menu-backdrop"></div>
-    <script src="popup.js"></script>
 </body>
 
 </html>
