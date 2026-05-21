@@ -1,3 +1,9 @@
+// Retrieve and apply theme as early as possible to prevent flickering on load
+chrome.storage.local.get('darkMode').then(stored => {
+  const isDark = stored.darkMode !== undefined ? stored.darkMode : false;
+  document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+}).catch(err => console.error('[Tubeless] Early theme load failed:', err));
+
 const DEFAULT_SETTINGS = {
   showDislikes: true,
   showLoadingState: true,
@@ -1058,6 +1064,24 @@ function getEl(id) {
   return document.getElementById(id);
 }
 
+function scrollContainerToItem(container, item) {
+  if (!container || !item) return;
+  const containerRect = container.getBoundingClientRect();
+  const itemRect = item.getBoundingClientRect();
+  const padding = 8;
+
+  const elemTop = itemRect.top - containerRect.top + container.scrollTop;
+  const elemBottom = elemTop + itemRect.height;
+  const containerTop = container.scrollTop;
+  const containerBottom = containerTop + container.clientHeight;
+
+  if (elemTop < containerTop + padding) {
+    container.scrollTop = elemTop - padding;
+  } else if (elemBottom > containerBottom - padding) {
+    container.scrollTop = elemBottom - container.clientHeight + padding;
+  }
+}
+
 function applyTheme(isDarkMode) {
   document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
 }
@@ -1107,7 +1131,13 @@ async function loadSettings() {
       if (values.deepWorkMode) deepWorkBtn.classList.add('active');
       else deepWorkBtn.classList.remove('active');
     }
-    setTimeout(() => { document.body.classList.remove('loading'); }, 100);
+    if (document.body.classList.contains('loading')) {
+      setTimeout(() => {
+        document.body.classList.remove('loading');
+      }, 350);
+    } else {
+      document.body.classList.remove('loading');
+    }
   } catch (err) { console.error('[Tubeless] load failed:', err); }
 }
 
@@ -1301,16 +1331,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       closeAllDropdowns();
       if (!isShowing) {
         moreMenuDropdown.classList.add('show');
+        moreMenuBtn.classList.add('open');
         getEl('menuBackdrop')?.classList.add('show');
-        setTimeout(() => {
-          const selected = moreMenuDropdown.querySelector('.selected');
-          const first = moreMenuDropdown.querySelector('button, .menu-item');
-          const target = selected || first;
-          if (target) {
-            target.focus({ preventScroll: true });
-            target.scrollIntoView({ block: 'nearest' });
-          }
-        }, 350);
       }
     });
   }
@@ -1323,14 +1345,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   function closeAllDropdowns() {
     if (moreMenuDropdown) moreMenuDropdown.classList.remove('show');
+    moreMenuBtn?.classList.remove('open');
     const qContent = getEl('qualityDropdownContent');
     if (qContent) qContent.classList.remove('show');
+    getEl('qualityMenuBtn')?.classList.remove('open');
     const lContent = getEl('languageMenuDropdown');
     if (lContent) lContent.classList.remove('show');
     const tContent = getEl('themeMenuDropdown');
     if (tContent) tContent.classList.remove('show');
     const qLockContent = getEl('smartQualityLockDropdown');
     if (qLockContent) qLockContent.classList.remove('show');
+    getEl('smartQualityLockBtn')?.classList.remove('open');
     getEl('menuBackdrop')?.classList.remove('show');
   }
   window.YTPlus_closeAllDropdowns = closeAllDropdowns;
@@ -1346,9 +1371,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   getEl('smartQualityLockBtn')?.addEventListener('click', (e) => {
     e.stopPropagation();
+    const isShowing = getEl('smartQualityLockDropdown').classList.contains('show');
     closeAllDropdowns();
-    getEl('smartQualityLockDropdown').classList.add('show');
-    getEl('menuBackdrop').classList.add('show');
+    if (!isShowing) {
+      getEl('smartQualityLockDropdown').classList.add('show');
+      getEl('smartQualityLockBtn').classList.add('open');
+      getEl('menuBackdrop').classList.add('show');
+    }
   });
 
   document.querySelectorAll('.quality-lock-opt').forEach(btn => {
@@ -1502,34 +1531,44 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (items.length === 0) return;
 
+    if (e.key === 'Escape') {
+      closeAllDropdowns();
+      return;
+    }
+
+    if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+
     let currentIndex = items.indexOf(document.activeElement);
+    let nextIndex = -1;
 
-    
     if (currentIndex === -1) {
-      currentIndex = items.findIndex(item => item.classList.contains('selected'));
+      const selectedIndex = items.findIndex(item => item.classList.contains('selected'));
+      if (selectedIndex !== -1) {
+        nextIndex = selectedIndex;
+      } else {
+        if (e.key === 'ArrowDown') {
+          nextIndex = 0;
+        } else if (e.key === 'ArrowUp') {
+          nextIndex = items.length - 1;
+        }
+      }
+      e.preventDefault();
+    } else {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        nextIndex = (currentIndex + 1) % items.length;
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        nextIndex = (currentIndex - 1 + items.length) % items.length;
+      }
     }
 
-    let nextIndex = currentIndex;
-
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      if (currentIndex === -1) nextIndex = 0;
-      else nextIndex = (currentIndex + 1) % items.length;
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      if (currentIndex === -1) nextIndex = items.length - 1;
-      else nextIndex = (currentIndex - 1 + items.length) % items.length;
-    }
-
-    if (nextIndex !== currentIndex || (currentIndex === -1 && items.length > 0)) {
+    if (nextIndex !== -1 && nextIndex !== currentIndex) {
       const targetItem = items[nextIndex];
       if (targetItem) {
         targetItem.focus({ preventScroll: true });
-        
-        targetItem.scrollIntoView({ block: 'nearest', behavior: 'auto' });
+        scrollContainerToItem(activeDropdown, targetItem);
       }
-    } else if (e.key === 'Escape') {
-      closeAllDropdowns();
     }
   });
 });
@@ -1542,6 +1581,7 @@ const ytPlusDownload = {
   lastStateText: 'loading',
   lastStateDisabled: true,
   listenersAttached: false,
+  lastPopulatedUrl: null,
 
   async init() {
     if (this.isInitializing) return;
@@ -1573,7 +1613,7 @@ const ytPlusDownload = {
       if (isPlaylist && !isWatch) {
         this.currentVideo = { url: tab.url, title: 'Playlist', qualities: [] };
         this.setupPlaylistToggle(true);
-        this.populateQualities({ qualities: [] });
+        this.populateQualities(this.currentVideo);
         this.updateState('download', false);
         return;
       }
@@ -1585,7 +1625,7 @@ const ytPlusDownload = {
         this.initRetryCount = 0; 
         this.currentVideo = { ...metadata, url: tab.url };
         this.setupPlaylistToggle();
-        this.populateQualities(metadata);
+        this.populateQualities(this.currentVideo);
         this.updateState('download', false);
       } else if (metadata) {
         
@@ -1656,6 +1696,7 @@ const ytPlusDownload = {
     if (this.lastStateDisabled) {
       this.updateState(this.lastStateText, true);
     } else if (this.currentVideo) {
+      this.lastPopulatedUrl = null;
       this.populateQualities(this.currentVideo);
     }
   },
@@ -1670,6 +1711,21 @@ const ytPlusDownload = {
     if (!videoList || !audioList || !subtitleList || !thumbList || !qualityText) return;
 
     const qualities = metadata.qualities || [];
+
+    if (this.lastPopulatedUrl === metadata.url && videoList.children.length > 0) {
+      const allItems = getEl('qualityDropdownContent').querySelectorAll('.menu-item');
+      allItems.forEach(btn => {
+        if (btn.dataset.quality === this.selectedQuality) {
+          btn.classList.add('selected');
+        } else {
+          btn.classList.remove('selected');
+        }
+      });
+      return;
+    }
+
+    this.lastPopulatedUrl = metadata.url;
+
     const activeEl = document.activeElement;
     const activeLabel = activeEl?.innerText;
     const activeId = activeEl?.id;
@@ -1683,6 +1739,7 @@ const ytPlusDownload = {
     
     const audioBtn = document.createElement('button');
     audioBtn.className = 'menu-item audio-option';
+    audioBtn.dataset.quality = 'audio';
     audioBtn.innerHTML = `<span>${t('audioOnly')}</span> <span class="badge">HQ</span>`;
     audioBtn.onclick = (e) => {
       e.stopPropagation();
@@ -1704,6 +1761,7 @@ const ytPlusDownload = {
       const renderSub = (sub) => {
         const btn = document.createElement('button');
         btn.className = 'menu-item subtitle-option';
+        btn.dataset.quality = `sub_${sub.lang}`;
         const cleanLang = sub.lang?.split('-')[0]?.toLowerCase();
         const displayLabel = langMap[cleanLang] || sub.label;
         btn.innerHTML = `<span>${displayLabel}</span>${sub.isAuto ? '<span class="badge" style="background:var(--secondary-text); margin-left:4px;">AUTO</span>' : ''}`;
@@ -1745,6 +1803,7 @@ const ytPlusDownload = {
     
     const thumbBtn = document.createElement('button');
     thumbBtn.className = 'menu-item';
+    thumbBtn.dataset.quality = 'thumbnail';
     thumbBtn.innerHTML = `<span>${t('hd')}</span> <span class="badge" style="background:var(--accent-color)">IMG</span>`;
     thumbBtn.onclick = (e) => {
       e.stopPropagation();
@@ -1770,14 +1829,20 @@ const ytPlusDownload = {
         this.selectedQuality = best.label;
         this.setBtnLabel(qualityText, best, false);
       } else {
-        const currentQ = sorted.find(q => q.label === this.selectedQuality);
-        this.setBtnLabel(qualityText, currentQ || this.selectedQuality, false);
+        let currentQ = sorted.find(q => q.label === this.selectedQuality);
+        if (!currentQ) {
+          const targetResInt = parseInt(this.selectedQuality) || 1080;
+          currentQ = sorted.find(q => (parseInt(q.label) || 0) <= targetResInt) || sorted[0];
+          this.selectedQuality = currentQ.label;
+        }
+        this.setBtnLabel(qualityText, currentQ, false);
       }
     }
 
     sorted.forEach((q, index) => {
       const btn = document.createElement('button');
       btn.className = 'menu-item quality-option-item';
+      btn.dataset.quality = q.label;
       if (this.selectedQuality === q.label) btn.classList.add('selected');
 
       const resInt = parseInt(q.label) || 0;
@@ -1803,7 +1868,7 @@ const ytPlusDownload = {
         const restored = newItems.find(it => it.innerText === activeLabel) || (activeId && getEl(activeId));
         if (restored) {
           restored.focus({ preventScroll: true });
-          restored.scrollIntoView({ block: 'nearest' });
+          scrollContainerToItem(getEl('qualityDropdownContent'), restored);
         }
       }, 0);
     }
@@ -1840,16 +1905,8 @@ const ytPlusDownload = {
 
     if (!isShowing) {
       qContent.classList.add('show');
+      getEl('qualityMenuBtn')?.classList.add('open');
       getEl('menuBackdrop')?.classList.add('show');
-      setTimeout(() => {
-        const selected = qContent.querySelector('.selected');
-        const first = qContent.querySelector('button, .menu-item');
-        const target = selected || first;
-        if (target) {
-          target.focus({ preventScroll: true });
-          target.scrollIntoView({ block: 'nearest' });
-        }
-      }, 350);
     }
   },
 
@@ -1885,16 +1942,12 @@ const ytPlusDownload = {
       this.lastStateText = text;
 
       if (disabled) {
+        qualityText.setAttribute('data-t', text);
         qualityText.textContent = t(text);
         if (toggleBtn) toggleBtn.style.display = 'none';
       } else {
+        qualityText.removeAttribute('data-t');
         if (toggleBtn && this.playlistId) toggleBtn.style.display = 'flex';
-
-        if (qualityText.textContent === t('loading') || qualityText.textContent === 'Loading...') {
-          const label = this.selectedQuality;
-          const qObj = this.currentVideo?.qualities?.find(q => q.label === label);
-          this.setBtnLabel(qualityText, qObj || label, false);
-        }
       }
     }
   },
