@@ -136,7 +136,7 @@ function FTV_canvas() {
         ? (pr?.videoDetails?.title || activeReel?.querySelector('#title')?.innerText || "Shorts")
         : (document.querySelector("#title yt-formatted-string")?.innerText || document.title);
     
-    link.download = title.trim() + " [qalva].png", document.body.appendChild(link), link.click(), document.body.removeChild(link);
+    link.download = title.trim() + " [Tubeless].png", document.body.appendChild(link), link.click(), document.body.removeChild(link);
 
     
     window.dispatchEvent(new CustomEvent('YTPLUS_SCREENSHOT_CAPTURED'));
