@@ -122,6 +122,9 @@ body.loading .app-layout {
   z-index: 100;
   flex-shrink: 0;
   overflow: hidden;
+  will-change: width;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 [dir='rtl'] .sidebar {
@@ -259,6 +262,8 @@ body.loading .app-layout {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  will-change: scroll-position;
+  transform: translate3d(0, 0, 0);
 }
 
 
@@ -275,6 +280,9 @@ body.loading .app-layout {
   flex-direction: column;
   gap: 0;
   overflow: hidden;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 [data-theme='dark'] .quick-access {
@@ -612,6 +620,8 @@ body.loading .app-layout {
   background: var(--bg-color);
   display: flex;
   flex-direction: column;
+  will-change: scroll-position;
+  transform: translate3d(0, 0, 0);
 }
 
 .content-container {
@@ -637,6 +647,9 @@ body.loading .app-layout {
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  will-change: transform, background-color, padding, box-shadow;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
   transition: all var(--transition);
 }
 
@@ -754,6 +767,9 @@ body.loading .app-layout {
 .settings-section {
   margin-bottom: 48px;
   scroll-margin-top: 130px;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 .section-title {
@@ -772,6 +788,9 @@ body.loading .app-layout {
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow);
   overflow: hidden;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 
@@ -923,6 +942,9 @@ body.loading .app-layout {
   background-color: var(--border-color);
   transition: .2s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 20px;
+  will-change: background-color;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 .slider::before {
@@ -936,6 +958,9 @@ body.loading .app-layout {
   transition: .2s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 50%;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 .switch input:checked+.slider {
