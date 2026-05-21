@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="https://github.com/qalva/tubeless/releases/latest"><img src="https://img.shields.io/badge/download-latest-orange.svg" /></a>
-  <img src="https://img.shields.io/badge/version-4.0.3-blue.svg" />
+  <img src="https://img.shields.io/badge/version-4.0.4-blue.svg" />
   <img src="https://img.shields.io/badge/license-MIT-green.svg" />
 </p>
 
@@ -48,6 +48,7 @@ The extension transforms YouTube into a focused workspace. Features advanced ad-
 8. [Disclaimer](#disclaimer)
 9. [Architecture](#architecture)
 10. [Changelog](#changelog)
+    - [[4.0.4] - 2026-05-21](#404---2026-05-21)
     - [[4.0.3] - 2026-05-19](#403---2026-05-19)
     - [[4.0.2] - 2026-05-18](#402---2026-05-18)
     - [[4.0.1] - 2026-05-17](#401---2026-05-17)
@@ -254,6 +255,13 @@ Event-driven, modular, performance-first design.
 ---
 
 ## Changelog
+
+### [4.0.4] - 2026-05-21
+
+### Fixed
+- UI Bug: Fixed an issue where the download quality menu would get stuck in a "Loading..." state after toggling the extension language.
+- UI Bug: Fixed 60fps and HDR badges disappearing or stripping off when scrolling between videos.
+- UI Bug: Fixed the download quality menu not dynamically auto-updating available video formats when scrolling through Shorts or navigating.
 
 ### [4.0.3] - 2026-05-19
 
