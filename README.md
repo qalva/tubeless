@@ -112,7 +112,7 @@ The extension transforms YouTube into a focused workspace. Features advanced ad-
 
 ---
 
-## Download & Install
+### Download & Install
 
 1. Download the latest <a href="https://github.com/qalva/tubeless/releases/latest" target="_blank">Tubeless Extension</a> `.zip` file from the **Assets** section, then extract it.
 
