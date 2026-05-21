@@ -34,7 +34,7 @@ The extension transforms YouTube into a focused workspace. Features advanced ad-
     - [Playback & Player Enhancements](#playback--player-enhancements)
     - [Media Tools](#media-tools)
     - [Productivity & System Tools](#productivity--system-tools)
-3. [Download & Install](#Download-&-Install)
+3. [Download & Install](#Download--Install)
 4. [Screenshots](#screenshots)
     - [Deep Work Mode](#deep-work-mode)
     - [Floating Player Experience](#floating-player-experience)
