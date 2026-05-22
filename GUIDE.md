@@ -62,7 +62,7 @@
 ## Media & Downloading
 
 > [!IMPORTANT]
-> To enable downloads, ensure you have the <a href="https://www.mediafire.com/file/ehm7j8bymissl1m/TubelessSetup-1.0.4.exe/file" target="_blank">Tubeless Desktop</a> running on your PC.
+> To enable downloads, ensure you have the <a href="https://www.mediafire.com/file/2u6yao0v0pr8qs6/TubelessSetup-1.0.5.exe/file" target="_blank">Tubeless Desktop</a> running on your PC.
 
 ### How to Download
 1.  Open any YouTube video.
