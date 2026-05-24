@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="https://github.com/qalva/tubeless/releases/latest"><img src="https://img.shields.io/badge/download-latest-orange.svg" /></a>
-  <img src="https://img.shields.io/badge/version-4.0.4-blue.svg" />
+  <img src="https://img.shields.io/badge/version-5.0.0-blue.svg" />
   <img src="https://img.shields.io/badge/license-MIT-green.svg" />
 </p>
 
@@ -48,6 +48,7 @@ The extension transforms YouTube into a focused workspace. Features advanced ad-
 8. [Disclaimer](#disclaimer)
 9. [Architecture](#architecture)
 10. [Changelog](#changelog)
+    - [[5.0.0] - 2026-05-24](#500---2026-05-24)
     - [[4.0.4] - 2026-05-21](#404---2026-05-21)
     - [[4.0.3] - 2026-05-19](#403---2026-05-19)
     - [[4.0.2] - 2026-05-18](#402---2026-05-18)
@@ -259,6 +260,23 @@ Event-driven, modular, performance-first design.
 ---
 
 ## Changelog
+
+### [5.0.0] - 2026-05-24
+
+### Major Release: Modular Architecture & Production Hardening
+
+### Improved
+- Architecture Refactor: Split monolithic `content.js` (1571 lines) into 13 focused modules under `src/content/` organized by responsibility: `dislikes/`, `downloads/`, `features/`, `i18n/`.
+- Desktop App: Split `server.py` (1758 lines) into 9 modules under `src/`: `download/`, `notifications/`, `maintenance/`, plus `config.py` for constants.
+- Build System: Updated `manifest.json` content script loading order to match modular dependency graph.
+- Constants extraction: All ports, paths, semaphores, and config values centralized in dedicated config modules.
+
+### Fixed
+- Bug: Fixed duplicate hotkey listener causing double execution (double downloads, double toast notifications).
+- Bug: Fixed `INSERT_RETRY_INTERVAL_MS` redeclaration `SyntaxError` that broke navigation watching, resulting in missed dislike counts and stale video metadata.
+- Bug: Fixed Cinema Mode regression — selector was referenced at `selectors.cinemaButton` instead of `selectors.productivityTargets.cinemaButton`, preventing theater mode from engaging.
+- Bug: Fixed `_log` `ReferenceError` in settings load catch blocks via optional chaining guards.
+- Bug: Fixed duplicate `ytPlusGetVideoMetadata` definition that was silently shadowing the bridge metadata function.
 
 ### [4.0.4] - 2026-05-21
 
