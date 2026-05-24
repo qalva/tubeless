@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Tubeless",
-  "version": "4.0.4",
+  "version": "5.0.0",
   "description": "The open source control layer for YouTube.",
   "short_name": "Tubeless",
   "permissions": [
@@ -25,7 +25,7 @@
     "https://api.github.com/*"
   ],
   "background": {
-    "service_worker": "src/background/background.js"
+    "service_worker": "src/background/service-worker.js"
   },
   "icons": {
     "16": "assets/icon.png",
@@ -52,7 +52,7 @@
         "https://*.google.com/accounts/*"
       ],
       "js": [
-        "src/content/downloader-bridge.js"
+        "src/content/downloads/bridge.js"
       ],
       "run_at": "document_start",
       "world": "MAIN"
@@ -67,12 +67,23 @@
         "https://*.google.com/accounts/*"
       ],
       "js": [
-        "src/content/content-utils.js",
+        "src/content/utils.js",
         "adblock/contentscript.js",
-        "src/content/content.js",
-        "src/content/drag-drop.js"
+        "src/content/settings.js",
+        "src/content/i18n/translations.js",
+        "src/content/dislikes/selectors.js",
+        "src/content/features/styles.js",
+        "src/content/dislikes/engine.js",
+        "src/content/features/video-adjustments.js",
+        "src/content/downloads/toast.js",
+        "src/content/downloads/downloader.js",
+        "src/content/features/pip.js",
+        "src/content/features/screenshot.js",
+        "src/content/features/hotkeys.js",
+        "src/content/features/navigation.js",
+        "src/content/downloads/drag-drop.js",
+        "src/content/init.js"
       ],
-      "css": [],
       "run_at": "document_start",
       "world": "ISOLATED"
     }
