@@ -1034,7 +1034,7 @@ var storesChangesCallBack = function (changes) { return listen_store_changed_awa
     return listen_store_changed_generator(this, function (_e) {
         switch (_e.label) {
             case 0:
-                YOUTUBE_REGEX = /^https?:\/\/(\w*.)?youtube.com/i;
+                YOUTUBE_REGEX = /^https?:\/\/(\w*\.)?youtube.com/i;
                 _e.label = 1;
             case 1:
                 _e.trys.push([1, 8, 9, 10]);
@@ -1138,20 +1138,9 @@ var scheduleHandler = function () {
 var mainScheduler = function () { return main_scheduler_awaiter(void 0, void 0, void 0, function () {
     return main_scheduler_generator(this, function (_a) {
         switch (_a.label) {
-            case 0:
-                setInterval(function () { return main_scheduler_awaiter(void 0, void 0, void 0, function () {
-                    return main_scheduler_generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0: return [4, chrome.runtime.getPlatformInfo()];
-                            case 1:
-                                _a.sent();
-                                return [2];
-                        }
-                    });
-                }); }, 25000);
-                return [4, chrome.alarms.create(ActionsEnum.Ping, {
-                        periodInMinutes: 1,
-                    })];
+            case 0: return [4, chrome.alarms.create(ActionsEnum.Ping, {
+                    periodInMinutes: 1,
+                })];
             case 1:
                 _a.sent();
                 scheduleHandler();
