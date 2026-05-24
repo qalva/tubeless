@@ -74,7 +74,6 @@ var networkRulesFallback = [
     '||google.com/pagead/',
     '||googlevideo.com/initplayback?source=youtube&*&c=TVHTML5&oad=$xmlhttprequest',
 ];
-var youtubeAnnotationsRegexes = ( null && (['*annotations_invideo*']));
 
 ;
 var ExtensionsKeys;
@@ -430,40 +429,29 @@ var custom_massage_listener_generator = (undefined && undefined.__generator) || 
 
 
 
-var toggleExtensionMassageListener = function () { return custom_massage_listener_awaiter(void 0, void 0, void 0, function () {
-    var isEnabled;
-    return custom_massage_listener_generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4, getFromChromeStorage(SettingsKeys.Ads)];
-            case 1:
-                isEnabled = _a.sent();
-                if (isEnabled) {
-                    window.addEventListener(DISABLE_EVENT_NAME, function () { return custom_massage_listener_awaiter(void 0, void 0, void 0, function () {
-                        return custom_massage_listener_generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4, setToChromeStorage(SettingsKeys.Ads, false)];
-                                case 1:
-                                    _a.sent();
-                                    return [2];
-                            }
-                        });
-                    }); });
+var toggleExtensionMassageListener = function () {
+
+    window.addEventListener(DISABLE_EVENT_NAME, function () { return custom_massage_listener_awaiter(void 0, void 0, void 0, function () {
+        return custom_massage_listener_generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4, setToChromeStorage(SettingsKeys.Ads, false)];
+                case 1:
+                    _a.sent();
                     return [2];
-                }
-                window.addEventListener(ENABLE_EVENT_NAME, function () { return custom_massage_listener_awaiter(void 0, void 0, void 0, function () {
-                    return custom_massage_listener_generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0: return [4, setToChromeStorage(SettingsKeys.Ads, true)];
-                            case 1:
-                                _a.sent();
-                                return [2];
-                        }
-                    });
-                }); });
-                return [2];
-        }
-    });
-}); };
+            }
+        });
+    }); });
+    window.addEventListener(ENABLE_EVENT_NAME, function () { return custom_massage_listener_awaiter(void 0, void 0, void 0, function () {
+        return custom_massage_listener_generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4, setToChromeStorage(SettingsKeys.Ads, true)];
+                case 1:
+                    _a.sent();
+                    return [2];
+            }
+        });
+    }); });
+};
 var extensionStatusMessageListener = function () { return custom_massage_listener_awaiter(void 0, void 0, void 0, function () {
     var createEvent, eventHandler, _a, _b;
     return custom_massage_listener_generator(this, function (_c) {
@@ -512,7 +500,7 @@ var isIframe = function () {
     }
     catch (e) {
         console.log('Error checking iframe', e);
-        return true;
+        return false;
     }
 };
 
@@ -782,7 +770,11 @@ function domReady(callback) {
         callback();
         return;
     }
-    window.addEventListener('load', callback, false);
+    var handler = function () {
+        window.removeEventListener('load', handler, false);
+        callback();
+    };
+    window.addEventListener('load', handler, false);
 }
 var waitForElement = function (selector) { return dom_awaiter(void 0, void 0, void 0, function () {
     return dom_generator(this, function (_a) {
