@@ -274,7 +274,7 @@ Event-driven, modular, performance-first design.
 #### Major Release: Modular Architecture & Production Hardening
 
 **Improved**
-- Architecture Refactor: Split monolithic `content.js` (1571 lines) into 13 focused modules under `src/content/` organized by responsibility: `dislikes/`, `downloads/`, `features/`, `i18n/`.
+- Architecture Refactor: Split monolithic `content.js` into 13 focused modules under `src/content/` organized by responsibility: `dislikes/`, `downloads/`, `features/`, `i18n/`.
 - Desktop App: Split `server.py` (1758 lines) into 9 modules under `src/`: `download/`, `notifications/`, `maintenance/`, plus `config.py` for constants.
 - Build System: Updated `manifest.json` content script loading order to match modular dependency graph.
 - Constants extraction: All ports, paths, semaphores, and config values centralized in dedicated config modules.
