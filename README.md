@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="https://github.com/qalva/tubeless/releases/latest"><img src="https://img.shields.io/badge/download-latest-orange.svg" alt="Download latest" /></a>
-  <img src="https://img.shields.io/badge/version-5.0.0-blue.svg" alt="Version 5.0.1" />
+  <img src="https://img.shields.io/badge/version-5.0.1-blue.svg" alt="Version 5.0.1" />
   <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="MIT License" />
 </p>
 
